@@ -1,15 +1,13 @@
-@extends('layouts.auth')
+<?php $__env->startSection('title', 'Daftar - FocusOneX Archery'); ?>
 
-@section('title', 'Daftar - FocusOneX Archery')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <section class="relative min-h-screen flex items-center justify-center px-4 overflow-hidden">
 
     <!-- Background -->
     <div class="absolute inset-0 z-0">
-        <img src="{{ asset('asset/img/latarbelakanglogin.jpeg') }}"
+        <img src="<?php echo e(asset('asset/img/latarbelakanglogin.jpeg')); ?>"
              class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-black/60"></div>
+        <div class="absolute inset-0 bg-black/40"></div>
     </div>
 
     <!-- Register Card -->
@@ -20,22 +18,22 @@
                 Register
             </h1>
 
-            @if ($errors->any())
+            <?php if($errors->any()): ?>
                 <div class="mb-6 rounded-xl border border-red-400/30 bg-red-500/10 p-3 text-sm text-red-300">
-                    @foreach ($errors->all() as $error)
-                        <p>{{ $error }}</p>
-                    @endforeach
+                    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <p><?php echo e($error); ?></p>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
-            @endif
+            <?php endif; ?>
 
-            <form action="{{ route('register.post') }}" method="POST" class="space-y-8">
-                @csrf
+            <form action="<?php echo e(route('register.post')); ?>" method="POST" class="space-y-8">
+                <?php echo csrf_field(); ?>
 
                 <!-- Name -->
                 <div>
                     <input type="text"
                            name="name"
-                           value="{{ old('name') }}"
+                           value="<?php echo e(old('name')); ?>"
                            required
                            placeholder="Full name"
                            class="w-full bg-transparent border-0 border-b border-white
@@ -47,7 +45,7 @@
                 <div>
                     <input type="email"
                            name="email"
-                           value="{{ old('email') }}"
+                           value="<?php echo e(old('email')); ?>"
                            required
                            placeholder="Email address"
                            class="w-full bg-transparent border-0 border-b border-white
@@ -59,7 +57,7 @@
                 <div>
                     <input type="tel"
                            name="phone"
-                           value="{{ old('phone') }}"
+                           value="<?php echo e(old('phone')); ?>"
                            required
                            placeholder="Phone number"
                            class="w-full bg-transparent border-0 border-b border-white
@@ -103,7 +101,7 @@
                 <div class="flex-grow border-t border-white/15"></div>
             </div>
 
-            <a href="{{ route('auth.google.redirect') }}"
+            <a href="<?php echo e(route('auth.google.redirect')); ?>"
                class="flex items-center justify-center gap-3 w-full
                       bg-white hover:bg-white/80 border border-white/20
                       rounded-xl py-3 text-sm font-medium text-black transition-all">
@@ -118,7 +116,7 @@
 
             <p class="mt-6 text-center text-sm text-white/50">
                 Already have an account?
-                <a href="{{ route('login') }}" class="text-white hover:text-white/80 font-semibold">
+                <a href="<?php echo e(route('login')); ?>" class="text-white hover:text-white/80 font-semibold">
                     Login
                 </a>
             </p>
@@ -126,4 +124,6 @@
         </div>
     </div>
 </section>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.auth', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\laragon\www\Project\club-panahan\resources\views/auth/register.blade.php ENDPATH**/ ?>

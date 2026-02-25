@@ -1,13 +1,13 @@
-﻿@extends('layouts.auth')
+﻿
 
-@section('title', 'Login - FocusOneX Archery')
+<?php $__env->startSection('title', 'Login - FocusOneX Archery'); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 <section class="relative min-h-screen flex items-center justify-center px-4 overflow-hidden">
 
     <!-- Background -->
     <div class="absolute inset-0 z-0">
-        <img src="{{ asset('asset/img/latarbelakanglogin.jpeg') }}"
+        <img src="<?php echo e(asset('asset/img/latarbelakanglogin.jpeg')); ?>"
              alt="Background"
              class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-black/60"></div>
@@ -22,31 +22,32 @@
             </h1>
 
             <!-- Error Messages -->
-            @if ($errors->any())
+            <?php if($errors->any()): ?>
             <div class="mb-6 rounded-xl border border-red-400/30 bg-red-500/10 p-3 text-sm text-red-300">
-                @foreach ($errors->all() as $error)
-                    <p>{{ $error }}</p>
-                @endforeach
+                <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <p><?php echo e($error); ?></p>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
-            @endif
+            <?php endif; ?>
 
             <!-- Success Message -->
-            @if (session('status'))
+            <?php if(session('status')): ?>
             <div class="mb-6 rounded-xl border border-green-400/30 bg-green-500/10 p-3 text-sm text-green-300">
-                {{ session('status') }}
+                <?php echo e(session('status')); ?>
+
             </div>
-            @endif
+            <?php endif; ?>
 
             <!-- Form -->
-            <form method="POST" action="{{ route('login.post') }}" class="space-y-8">
-                @csrf
+            <form method="POST" action="<?php echo e(route('login.post')); ?>" class="space-y-8">
+                <?php echo csrf_field(); ?>
 
                 <!-- Email -->
                 <div class="relative">
                     <input type="email"
                            name="email"
                            id="email"
-                           value="{{ old('email') }}"
+                           value="<?php echo e(old('email')); ?>"
                            required
                            placeholder="Enter your email"
                            class="w-full bg-transparent border-0 border-b border-white
@@ -90,7 +91,7 @@
                                class="h-4 w-4 rounded border-white/30 bg-white/10 text-blue-500 focus:ring-blue-500/50">
                         Remember me
                     </label>
-                    <a href="{{ route('password.request') }}"
+                    <a href="<?php echo e(route('password.request')); ?>"
                        class="text-sm text-white/70 hover:text-white transition-colors">
                         Forgot password?
                     </a>
@@ -117,7 +118,7 @@
 
 
             <!-- Google Login -->
-            <a href="{{ route('auth.google.redirect') }}"
+            <a href="<?php echo e(route('auth.google.redirect')); ?>"
                class="relative flex items-center justify-center gap-3 w-full
                       bg-white hover:bg-white/80 border border-white/20
                       rounded-xl py-3 px-4 text-sm font-medium text-black
@@ -134,13 +135,13 @@
             <!-- Register & Back -->
             <p class="mt-6 text-center text-sm text-white/50">
                 Don't have an account?
-                <a href="{{ route('register') }}" class="font-semibold text-white hover:text-white/80 transition-colors">
+                <a href="<?php echo e(route('register')); ?>" class="font-semibold text-white hover:text-white/80 transition-colors">
                     Register
                 </a>
             </p>
 
             <div class="mt-4 text-center">
-                <a href="{{ route('beranda') }}"
+                <a href="<?php echo e(route('beranda')); ?>"
                    class="inline-flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors">
                     <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
@@ -169,4 +170,5 @@ function togglePassword() {
     }
 }
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.auth', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\laragon\www\Project\club-panahan\resources\views/auth/login.blade.php ENDPATH**/ ?>

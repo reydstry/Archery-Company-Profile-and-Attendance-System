@@ -1,9 +1,7 @@
-@extends('layouts.admin')
+<?php $__env->startSection('title', 'Training Session'); ?>
+<?php $__env->startSection('subtitle', 'Kelola tanggal sesi dan status tanpa slot/attendance'); ?>
 
-@section('title', 'Training Session')
-@section('subtitle', 'Kelola tanggal sesi dan status tanpa slot/attendance')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="space-y-6" x-data="trainingSessionsPage()" x-init="init()">
 
     <!-- Filter -->
@@ -137,7 +135,7 @@
                 <h3 class="text-sm font-semibold text-white">Daftar Session</h3>
             </div>
             <div class="flex">
-                <a href="{{ route('admin.sessions.create') }}" 
+                <a href="<?php echo e(route('admin.sessions.create')); ?>" 
                 class="inline-flex items-center justify-center w-full gap-2 px-4 py-3 rounded-2xl 
                         bg-white hover:bg-white/90 text-[#1a307b] text-xs font-semibold 
                         shadow-md hover:shadow-lg transition-all duration-200">
@@ -176,7 +174,7 @@
                     </svg>
                 </div>
                 <p class="text-slate-500 font-semibold text-sm">Belum ada session</p>
-                <a href="{{ route('admin.sessions.create') }}" 
+                <a href="<?php echo e(route('admin.sessions.create')); ?>" 
                    class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1a307b] 
                           text-white text-sm font-semibold hover:bg-[#162a69] transition-all mt-1">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -520,9 +518,9 @@
     </div>
 
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@push('scripts')
+<?php $__env->startPush('scripts'); ?>
 <script>
 function trainingSessionsPage() {
     return {
@@ -611,4 +609,5 @@ function trainingSessionsPage() {
     }
 }
 </script>
-@endpush
+<?php $__env->stopPush(); ?>
+<?php echo $__env->make('layouts.admin', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\laragon\www\Project\club-panahan\resources\views/dashboards/admin/training/training-sessions.blade.php ENDPATH**/ ?>

@@ -1,13 +1,11 @@
-@extends('layouts.auth')
+<?php $__env->startSection('title', 'Forgot Password - FocusOneX Archery'); ?>
 
-@section('title', 'Forgot Password - FocusOneX Archery')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <section class="relative min-h-screen flex items-center justify-center px-4 overflow-hidden">
 
     <!-- Background -->
     <div class="absolute inset-0 z-0">
-        <img src="{{ asset('asset/img/latarbelakanglogin.jpeg') }}"
+        <img src="<?php echo e(asset('asset/img/latarbelakanglogin.jpeg')); ?>"
              class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-black/60"></div>
     </div>
@@ -24,28 +22,29 @@
                 Enter your email and we’ll send you a password reset link.
             </p>
 
-            @if (session('status'))
+            <?php if(session('status')): ?>
                 <div class="mb-6 rounded-xl border border-green-400/30 bg-green-500/10 p-3 text-sm text-green-300">
-                    {{ session('status') }}
-                </div>
-            @endif
+                    <?php echo e(session('status')); ?>
 
-            @if ($errors->any())
+                </div>
+            <?php endif; ?>
+
+            <?php if($errors->any()): ?>
                 <div class="mb-6 rounded-xl border border-red-400/30 bg-red-500/10 p-3 text-sm text-red-300">
-                    @foreach ($errors->all() as $error)
-                        <p>{{ $error }}</p>
-                    @endforeach
+                    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <p><?php echo e($error); ?></p>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
-            @endif
+            <?php endif; ?>
 
-            <form method="POST" action="{{ route('password.email') }}" class="space-y-8">
-                @csrf
+            <form method="POST" action="<?php echo e(route('password.email')); ?>" class="space-y-8">
+                <?php echo csrf_field(); ?>
 
                 <!-- Email -->
                 <div>
                     <input type="email"
                            name="email"
-                           value="{{ old('email') }}"
+                           value="<?php echo e(old('email')); ?>"
                            required
                            autofocus
                            placeholder="Email address"
@@ -63,7 +62,7 @@
 
             <p class="mt-6 text-center text-sm text-white/50">
                 Back to
-                <a href="{{ route('login') }}" class="text-white font-semibold hover:text-white/80">
+                <a href="<?php echo e(route('login')); ?>" class="text-white font-semibold hover:text-white/80">
                     Login
                 </a>
             </p>
@@ -71,4 +70,6 @@
         </div>
     </div>
 </section>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.auth', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\laragon\www\Project\club-panahan\resources\views/auth/forgot-password.blade.php ENDPATH**/ ?>
