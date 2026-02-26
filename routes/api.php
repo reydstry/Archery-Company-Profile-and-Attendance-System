@@ -13,6 +13,7 @@ use App\Http\Controllers\Member\RegistrationController;
 use App\Http\Controllers\PublicSite\NewsController as PublicNewsController;
 use App\Http\Controllers\PublicSite\AchievementController as PublicAchievementController;
 use App\Http\Controllers\PublicSite\GalleryController as PublicGalleryController;
+use App\Http\Controllers\PublicSite\PackageController as PublicPackageController;
 use App\Modules\Admin\Attendance\Controllers\AttendanceController as AdminAttendanceController;
 use App\Modules\Admin\Coach\Controllers\CoachController;
 use App\Modules\Admin\Dashboard\Controllers\AchievementController as AdminAchievementController;
@@ -44,6 +45,10 @@ Route::get('/achievements', [PublicAchievementController::class, 'index']);
 Route::get('/galleries', [PublicGalleryController::class, 'index']);
 Route::get('/galleries/{gallery}', [PublicGalleryController::class, 'show']);
 Route::get('/achievements/{achievement}', [PublicAchievementController::class, 'show']);
+
+// Public routes - Packages (for company profile)
+Route::get('/packages', [PublicPackageController::class, 'index']);
+Route::get('/packages/{package}', [PublicPackageController::class, 'show']);
 
 // Protected routes (perlu login)
 Route::middleware('auth:sanctum')->group(function () {
