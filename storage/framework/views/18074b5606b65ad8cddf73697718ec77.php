@@ -8,10 +8,12 @@
         <!-- Section Header -->
         <div class="text-center mb-12 sm:mb-16">
             <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
-                {{ __('program.packages_title') }}
+                <?php echo e(__('program.packages_title')); ?>
+
             </h1>
             <p class="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto">
-                {{ __('program.packages_subtitle') }}
+                <?php echo e(__('program.packages_subtitle')); ?>
+
             </p>
         </div>
 
@@ -115,3 +117,4 @@ function packageData() {
     }
 }
 </script>
+<?php /**PATH D:\laragon\www\Project-KP-Archery\resources\views/components/program/package-section.blade.php ENDPATH**/ ?>
