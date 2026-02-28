@@ -8,90 +8,66 @@
     <!-- Background -->
     <div class="absolute inset-0 z-0">
         <img src="{{ asset('asset/img/latarbelakanglogin.jpeg') }}"
-             alt="Background"
-             class="w-full h-full object-cover blur-sm">
-        <div class="absolute inset-0 bg-black/40"></div>
+             class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/60"></div>
     </div>
 
-    <!-- Forgot Password Card -->
-    <div class="relative z-10 bg-white rounded-2xl shadow-xl
-                w-full max-w-lg sm:max-w-xl lg:max-w-4xl
-                p-8 sm:p-10">
+    <!-- Card -->
+    <div class="relative z-10 w-full max-w-md">
+        <div class="backdrop-blur-sm border border-white/20 rounded-2xl shadow-2xl shadow-black/50 px-10 py-10">
 
-        <!-- Logo -->
-        <div class="flex justify-center mb-6">
-            <img src="{{ asset('asset/img/logofocus.png') }}"
-                 alt="FocusOneX"
-                 class="h-12 w-auto">
-        </div>
+            <h1 class="text-3xl font-bold text-white text-center mb-4">
+                Forgot Password
+            </h1>
 
-        <!-- Title -->
-        <h1 class="text-2xl font-bold text-center text-gray-900 mb-6">
-            Forgot Password
-        </h1>
-
-        <!-- Error -->
-        @if ($errors->any())
-            <div class="mb-4 text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg p-3">
-                @foreach ($errors->all() as $error)
-                    <p>{{ $error }}</p>
-                @endforeach
-            </div>
-        @endif
-
-        <!-- Success -->
-        @if (session('status'))
-            <div class="mb-4 text-sm text-green-600 bg-green-50 border border-green-200 rounded-lg p-3">
-                {{ session('status') }}
-            </div>
-        @endif
-
-        <!-- Form -->
-        <form method="POST" action="{{ route('password.email') }}" class="mt-8 space-y-6">
-            @csrf
-
-            <!-- Email -->
-            <div>
-                <label class="block mb-2 text-sm font-medium text-gray-700">
-                    Email Address
-                </label>
-                <input type="email"
-                       name="email"
-                       value="{{ old('email') }}"
-                       required
-                       autofocus
-                       placeholder="Masukkan email Anda"
-                       class="w-full rounded-lg border border-gray-300 px-4 py-3
-                              text-sm outline-none transition
-                              focus:border-blue-500 focus:ring-2 focus:ring-blue-500">
-            </div>
-
-            <!-- Info Text -->
-            <p class="text-sm text-gray-600">
-                Kami akan mengirimkan link reset password ke email Anda.
+            <p class="text-white/60 text-sm text-center mb-8">
+                Enter your email and we’ll send you a password reset link.
             </p>
 
-            <!-- Submit Button -->
-            <button type="submit"
-                    class="w-full rounded-lg bg-blue-600 py-3
-                           text-sm font-semibold text-white
-                           transition hover:bg-blue-700
-                           focus:outline-none focus:ring-4 focus:ring-blue-300">
-                Kirim Link Reset Password
-            </button>
-        </form>
+            @if (session('status'))
+                <div class="mb-6 rounded-xl border border-green-400/30 bg-green-500/10 p-3 text-sm text-green-300">
+                    {{ session('status') }}
+                </div>
+            @endif
 
-        <!-- Back to Login -->
-        <div class="mt-4 text-center">
-            <a href="{{ route('login') }}"
-               class="inline-flex items-center gap-2
-                      text-sm text-gray-600 hover:text-gray-900 transition">
-                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
-                </svg>
-                Back to Login
-            </a>
+            @if ($errors->any())
+                <div class="mb-6 rounded-xl border border-red-400/30 bg-red-500/10 p-3 text-sm text-red-300">
+                    @foreach ($errors->all() as $error)
+                        <p>{{ $error }}</p>
+                    @endforeach
+                </div>
+            @endif
+
+            <form method="POST" action="{{ route('password.email') }}" class="space-y-8">
+                @csrf
+
+                <!-- Email -->
+                <div>
+                    <input type="email"
+                           name="email"
+                           value="{{ old('email') }}"
+                           required
+                           autofocus
+                           placeholder="Email address"
+                           class="w-full bg-transparent border-0 border-b border-white
+                                  text-white placeholder-white text-sm
+                                  pb-2 pt-1 focus:outline-none focus:border-white">
+                </div>
+
+                <button type="submit"
+                        class="w-full bg-white border border-white/20 hover:bg-white/80
+                               rounded-xl py-3 text-sm font-medium text-black transition-all">
+                    Send Reset Link
+                </button>
+            </form>
+
+            <p class="mt-6 text-center text-sm text-white/50">
+                Back to
+                <a href="{{ route('login') }}" class="text-white font-semibold hover:text-white/80">
+                    Login
+                </a>
+            </p>
+
         </div>
     </div>
 </section>

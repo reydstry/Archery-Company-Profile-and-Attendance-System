@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'Dashboard') - FocusOneX Archery</title>
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
+    <title><?php echo $__env->yieldContent('title', 'Dashboard'); ?> - FocusOneX Archery</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -44,7 +44,7 @@
             .main-content { max-width: 100vw; overflow-x: auto; }
         }
     </style>
-    @stack('styles')
+    <?php echo $__env->yieldPushContent('styles'); ?>
 </head>
 <body class="bg-slate-100 min-h-screen overflow-x-hidden" x-data="{ sidebarOpen: false, isMobile: window.innerWidth < 1024 }" @resize.window="isMobile = window.innerWidth < 1024">
 
@@ -60,7 +60,26 @@
          class="fixed inset-0 bg-black/50 z-40 lg:hidden"
          x-cloak></div>
 
-    <x-toast-container />
+    <?php if (isset($component)) { $__componentOriginalbcd757c7bb20b76cf9bcd607adaf8c39 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalbcd757c7bb20b76cf9bcd607adaf8c39 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.toast-container','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('toast-container'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginalbcd757c7bb20b76cf9bcd607adaf8c39)): ?>
+<?php $attributes = $__attributesOriginalbcd757c7bb20b76cf9bcd607adaf8c39; ?>
+<?php unset($__attributesOriginalbcd757c7bb20b76cf9bcd607adaf8c39); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalbcd757c7bb20b76cf9bcd607adaf8c39)): ?>
+<?php $component = $__componentOriginalbcd757c7bb20b76cf9bcd607adaf8c39; ?>
+<?php unset($__componentOriginalbcd757c7bb20b76cf9bcd607adaf8c39); ?>
+<?php endif; ?>
 
     <div class="flex min-h-screen">
         <!-- Sidebar -->
@@ -77,7 +96,7 @@
             <!-- Logo -->
             <div class="p-5 sm:p-6 border-b border-slate-800 sticky top-0 bg-[#0b0b0f]/95 backdrop-blur-sm z-10">
                 <div class="flex items-center justify-between gap-3">
-                    <img src="{{ asset('asset/img/logowhite.png') }}" alt="FocusOneX Archery" class="h-9 sm:h-10 w-auto">
+                    <img src="<?php echo e(asset('asset/img/logowhite.png')); ?>" alt="FocusOneX Archery" class="h-9 sm:h-10 w-auto">
                     <button @click="sidebarOpen = false" class="lg:hidden text-slate-400 hover:text-white transition">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
@@ -86,7 +105,7 @@
                 </div>
             </div>
 
-            @include('layouts.sidebar')
+            <?php echo $__env->make('layouts.sidebar', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
         </aside>
 
         <!-- Main Content -->
@@ -95,14 +114,14 @@
             <div class="hidden lg:block sticky top-0 z-30 bg-white border-b border-slate-200 px-8 py-4 shadow-sm">
                 <div class="flex items-center justify-between">
                     <div>
-                        <h2 class="text-lg sm:text-2xl lg:text-3xl font-bold text-[#1a307b]">@yield('title')</h2>
-                        <p class="text-slate-500 mt-0.5 text-xs sm:text-sm">@yield('subtitle')</p>
+                        <h2 class="text-lg sm:text-2xl lg:text-3xl font-bold text-[#1a307b]"><?php echo $__env->yieldContent('title'); ?></h2>
+                        <p class="text-slate-500 mt-0.5 text-xs sm:text-sm"><?php echo $__env->yieldContent('subtitle'); ?></p>
                     </div>
                     <!-- User Profile Desktop -->
                     <div x-data="{ profileOpen: false }" class="relative">
                         <button @click="profileOpen = !profileOpen" class="flex items-center gap-3 px-4 py-2 rounded-xl bg-slate-50 hover:bg-slate-100 transition-all shadow-sm border border-slate-200">
                             <div class="text-left">
-                                <p class="text-slate-800 font-semibold text-sm leading-tight">{{ auth()->user()->name }}</p>
+                                <p class="text-slate-800 font-semibold text-sm leading-tight"><?php echo e(auth()->user()->name); ?></p>
                                 <p class="text-slate-500 text-xs">Administrator</p>
                             </div>
                             <svg class="w-4 h-4 text-slate-400 transition-transform" :class="profileOpen ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -122,11 +141,11 @@
                              class="absolute right-0 mt-2 w-56 bg-white rounded-xl shadow-2xl border border-slate-200 py-2"
                              x-cloak>
                             <div class="px-4 py-3 border-b border-slate-100">
-                                <p class="text-sm font-semibold text-slate-800">{{ auth()->user()->name }}</p>
-                                <p class="text-xs text-slate-500 mt-0.5">{{ auth()->user()->email }}</p>
+                                <p class="text-sm font-semibold text-slate-800"><?php echo e(auth()->user()->name); ?></p>
+                                <p class="text-xs text-slate-500 mt-0.5"><?php echo e(auth()->user()->email); ?></p>
                             </div>
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
+                            <form method="POST" action="<?php echo e(route('logout')); ?>">
+                                <?php echo csrf_field(); ?>
                                 <button type="submit" class="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-red-600 hover:bg-blue-50 transition">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
                                     Logout
@@ -150,7 +169,7 @@
                     <div x-data="{ mobileProfileOpen: false }" class="relative">
                         <button @click="mobileProfileOpen = !mobileProfileOpen" class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-50 hover:bg-slate-100 transition-all shadow-sm border border-slate-200">
                             <div class="text-left">
-                                <p class="text-slate-800 font-semibold text-xs leading-tight">{{ auth()->user()->name }}</p>
+                                <p class="text-slate-800 font-semibold text-xs leading-tight"><?php echo e(auth()->user()->name); ?></p>
                                 <p class="text-slate-500 text-[10px]">Administrator</p>
                             </div>
                             <svg class="w-3 h-3 text-slate-400 transition-transform" :class="mobileProfileOpen ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -165,11 +184,11 @@
                              class="absolute right-0 mt-2 w-56 bg-white rounded-xl shadow-2xl border border-slate-200 py-2"
                              x-cloak>
                             <div class="px-4 py-3 border-b border-slate-100">
-                                <p class="text-sm font-semibold text-slate-800">{{ auth()->user()->name }}</p>
-                                <p class="text-xs text-slate-500 mt-0.5">{{ auth()->user()->email }}</p>
+                                <p class="text-sm font-semibold text-slate-800"><?php echo e(auth()->user()->name); ?></p>
+                                <p class="text-xs text-slate-500 mt-0.5"><?php echo e(auth()->user()->email); ?></p>
                             </div>
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
+                            <form method="POST" action="<?php echo e(route('logout')); ?>">
+                                <?php echo csrf_field(); ?>
                                 <button type="submit" class="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 transition">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
                                     Logout
@@ -183,7 +202,7 @@
             <div class="p-3 sm:p-6 lg:p-8">
                 <div class="max-w-7xl mx-auto">
                     <!-- Content -->
-                    @yield('content')
+                    <?php echo $__env->yieldContent('content'); ?>
                 </div>
             </div>
         </main>
@@ -561,6 +580,7 @@
         })();
     </script>
 
-    @stack('scripts')
+    <?php echo $__env->yieldPushContent('scripts'); ?>
 </body>
 </html>
+<?php /**PATH C:\laragon\www\Project-KP-Archery\resources\views/layouts/admin.blade.php ENDPATH**/ ?>

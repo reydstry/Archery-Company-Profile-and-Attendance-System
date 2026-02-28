@@ -112,7 +112,11 @@
         <main class="flex-1 lg:ml-64 min-h-screen">
             <!-- Desktop Header -->
             <div class="hidden lg:block sticky top-0 z-30 bg-white border-b border-slate-200 px-8 py-4 shadow-sm">
-                <div class="flex items-center justify-end">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h2 class="text-lg sm:text-2xl lg:text-3xl font-bold text-[#1a307b]"><?php echo $__env->yieldContent('title'); ?></h2>
+                        <p class="text-slate-500 mt-0.5 text-xs sm:text-sm"><?php echo $__env->yieldContent('subtitle'); ?></p>
+                    </div>
                     <!-- User Profile Desktop -->
                     <div x-data="{ profileOpen: false }" class="relative">
                         <button @click="profileOpen = !profileOpen" class="flex items-center gap-3 px-4 py-2 rounded-xl bg-slate-50 hover:bg-slate-100 transition-all shadow-sm border border-slate-200">
@@ -197,12 +201,6 @@
 
             <div class="p-3 sm:p-6 lg:p-8">
                 <div class="max-w-7xl mx-auto">
-                    <!-- Page Header -->
-                    <div class="mb-3 sm:mb-6 bg-white border border-slate-200 rounded-2xl px-5 sm:px-6 py-4 shadow-sm">
-                        <h2 class="text-lg sm:text-2xl lg:text-3xl font-bold text-[#1a307b]"><?php echo $__env->yieldContent('title'); ?></h2>
-                        <p class="text-slate-500 mt-0.5 text-xs sm:text-sm"><?php echo $__env->yieldContent('subtitle'); ?></p>
-                    </div>
-
                     <!-- Content -->
                     <?php echo $__env->yieldContent('content'); ?>
                 </div>
