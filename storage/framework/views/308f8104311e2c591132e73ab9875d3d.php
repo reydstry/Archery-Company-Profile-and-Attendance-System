@@ -1,11 +1,6 @@
 <!-- Berita Section -->
 <div class="relative min-h-screen py-24 sm:py-32 
-    bg-gradient-to-b from-[#1b2659] via-[#0f172a] to-[#16213a] overflow-hidden">
-    
-    <!-- Background decorative blur -->
-    <div class="absolute top-10 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute bottom-10 right-10 w-96 h-96 bg-red-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
+    bg-gradient-to-b from-[#1b2659] to-[#16213a] overflow-hidden">
     <div class="container mx-auto px-6 relative z-10">
         
         <!-- Section Header -->

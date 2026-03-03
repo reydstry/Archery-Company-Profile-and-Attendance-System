@@ -1,8 +1,4 @@
-<div class="relative py-24 sm:py-32 bg-gradient-to-b from-[#0f172a] to-[#1b2659] overflow-hidden">
-
-    <div class="absolute top-10 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute bottom-10 right-10 w-96 h-96 bg-red-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
+<div class="relative py-24 sm:py-32 bg-gradient-to-b from-[#16213a] to-[#1b2659] overflow-hidden">
     <div class="container mx-auto px-6 relative z-10">
         <div class="text-center mb-12 sm:mb-16">
             <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">

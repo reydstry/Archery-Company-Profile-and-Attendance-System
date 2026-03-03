@@ -1,6 +1,6 @@
 <!-- Hero Section -->
 <section class="relative min-h-screen bg-gradient-to-b 
-from-[#0f172a] to-[#273576] flex items-center pt-15 overflow-hidden">
+from-[#1b2659] to-[#16213a] flex items-center pt-15 overflow-hidden">
 
 
     <div class="container mx-auto px-6 relative z-10">

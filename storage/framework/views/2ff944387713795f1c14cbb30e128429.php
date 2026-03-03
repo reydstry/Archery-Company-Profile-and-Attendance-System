@@ -1,5 +1,5 @@
 <!-- Why Choose Us Section -->
-<section class="relative py-24 sm:py-32 bg-gradient-to-b from-[#273576] via-[#1b2659] to-[#0f172a] overflow-hidden">
+<section class="relative py-24 sm:py-32 bg-gradient-to-b from-[#16213a] to-[#1b2659] overflow-hidden">
     <div class="container mx-auto px-6 relative z-10">
 
         <!-- Section Header -->

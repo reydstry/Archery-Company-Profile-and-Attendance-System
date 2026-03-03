@@ -1,5 +1,5 @@
 
-<section class="relative min-h-screen py-24 sm:py-32 bg-[#273576] overflow-hidden">
+<section class="relative min-h-screen py-24 sm:py-32 bg-gradient-to-b from-[#16213a] to-[#1b2659] overflow-hidden">
 
     <!-- Decorative blurs -->
     <!-- <div class="absolute top-0 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
