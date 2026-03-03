@@ -39,6 +39,10 @@ Route::get('/galeri', function () {
     return view('pages.galeri');
 })->name('galeri');
 
+Route::get('/galeri/highlights', function () {
+    return view('pages.galeri-highlights');
+})->name('galeri.highlights');
+
 Route::get('/kontak', function () {
     return view('pages.kontak');
 })->name('kontak');
@@ -47,6 +51,12 @@ Route::get('/kontak', function () {
 // dummay data berita detail
 use App\Http\Controllers\BeritaController;
 Route::get('/berita/{id}', [BeritaController::class, 'show'])->name('berita.detail');
+
+// News & Achievement Detail Pages
+use App\Http\Controllers\NewsDetailController;
+use App\Http\Controllers\AchievementDetailController;
+Route::get('/news/{news}', [NewsDetailController::class, 'show'])->name('news.detail');
+Route::get('/achievement/{achievement}', [AchievementDetailController::class, 'show'])->name('achievement.detail');
 
 // Guest only
 Route::middleware('guest')->group(function () {

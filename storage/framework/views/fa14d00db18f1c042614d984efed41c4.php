@@ -1,4 +1,8 @@
-<div class="relative py-24 sm:py-32 bg-gradient-to-b from-[#16213a] to-[#1b2659] overflow-hidden">
+<div class="relative py-24 sm:py-32 bg-gradient-to-b from-[#0f172a] to-[#1b2659] overflow-hidden">
+
+    <div class="absolute top-10 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-10 right-10 w-96 h-96 bg-red-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
     <div class="container mx-auto px-6 relative z-10">
         <div class="text-center mb-12 sm:mb-16">
             <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
@@ -25,7 +29,11 @@
                     'role' => 'Ulasan Google', 
                     'stars' => 5,  // Sesuaikan dengan rating di Google (1-5)
                     'text' => 'Tempat latihan panahan yg sangat representative, lengkap banget peralatannya. Dari pemula sampai kelas atlet bisa di sini. Buat orang yg cuman pengen liat orang manah juga bisa di sini.
-                                Lapaaang dan luaaaass banget.',
+                                Lapaaang dan luaaaass banget.
+                                Ada kantin, toilet yg bersih banget...  Ahh lengkap deh.
+                                Eh juga ada kudanya loh,  kedepannya akan jadi arena berkuda.
+                                From zero to hero bisa dah di sini.
+                                Coach nya juga sabar dan sangat menyesuaikan tingkatan anda..  Yg penting betul dulu caranya, target mah gampang.. Keep Focus',
             'photo' => null,  // Optional: paste URL foto profil dari Google, atau biarkan null untuk avatar otomatis
                     'link' => 'https://share.google/EkwBqtTqDNigh9Sby'
                 ],
@@ -37,7 +45,8 @@
                     'stars' => 5,
                     'text' => 'Tempat latihan panahan profesional nih. Dari kelas pemula sampai dengan kelas "legolas" hahaha.
                                 Buat anak-anak sampai dengan dewasa bisa latihan di sini.
-                                Dari pagi sampai malam juga boleh.',
+                                Dari pagi sampai malam juga boleh. Saya sendiri ikut kelas malam yg dari jam 20.00 sampai dengan jam 22.00.
+                                Tenang,  tetap terang kok. Pencahayaannya terang banget. Oh iya,  cukup bawa badan aja. Semua sudah lengkap di sini. Bawa teman juga ya,  biar seru dan beradu score.',
                     'photo' => null,
                     'link' => 'https://share.google/eHSthxKY5URynkvbg'
                 ],
@@ -98,16 +107,19 @@
             <a href="<?php echo e($t['link']); ?>" target="_blank" class="relative group block">
             <?php else: ?>
             <div class="relative group">
-            <?php endif; ?>  
-                <!-- Card -->
-                    <div class="liquid-glass relative p-6 text-center transition-transform duration-300 hover:scale-105"
-                        style="box-shadow: 0 8px 32px rgba(0,0,0,0.25);"
-                        onmouseenter="this.classList.add('is-hovered')"
-                        onmouseleave="this.classList.remove('is-hovered')">
+            <?php endif; ?>
+                <div class="absolute inset-0 bg-yellow-500/10 rounded-3xl blur-2xl scale-105 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-                        <!-- Shine -->
-                        <span class="shine"></span>
+                <div class="relative h-full bg-white/5 backdrop-blur-md border border-white/20 rounded-2xl p-6
+                            shadow-xl shadow-black/30 hover:shadow-2xl hover:shadow-black/60
+                            transition-all duration-300 hover:-translate-y-2 overflow-hidden">
 
+                    <!-- Shine -->
+                    <span class="absolute inset-0 w-full h-full 
+                                bg-gradient-to-r from-transparent via-white/10 to-transparent
+                                -translate-x-full group-hover:translate-x-full 
+                                transition-transform duration-700 ease-in-out skew-x-12 pointer-events-none z-10">
+                    </span>
 
                     <?php if($isGoogleReview): ?>
                     <!-- Google Badge -->
@@ -174,13 +186,13 @@
                     </div>
                     <?php endif; ?>
                 </div>
-                <?php if($hasLink): ?>
-                </a>
-                <?php else: ?>
+            <?php if($hasLink): ?>
+            </a>
+            <?php else: ?>
             </div>
             <?php endif; ?>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
+
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
-        
     </div>
-</div><?php /**PATH C:\laragon\www\Project\club-panahan\resources\views/components/kontak/testimonials.blade.php ENDPATH**/ ?>
+</div><?php /**PATH D:\laragon\www\Project-KP-Archery\resources\views/components/kontak/testimonials.blade.php ENDPATH**/ ?>

@@ -302,4 +302,9 @@ function dashboardData() {
 </script>
 <?php $__env->stopPush(); ?>
 <?php $__env->stopSection(); ?>
+<<<<<<< HEAD:storage/framework/views/d13b29d5c1c42ca0f478930d915cc550.php
 <?php echo $__env->make('layouts.admin', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\laragon\www\Project\club-panahan\resources\views/dashboards/admin/dashboard/dashboard.blade.php ENDPATH**/ ?>
+=======
+
+<?php echo $__env->make('layouts.admin', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\laragon\www\Project-KP-Archery\resources\views/dashboards/admin/dashboard/dashboard.blade.php ENDPATH**/ ?>
+>>>>>>> fix-bug:storage/framework/views/aaa1d6bb0252db2da5817d801be569c8.php

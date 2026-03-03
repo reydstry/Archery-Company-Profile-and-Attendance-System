@@ -20,4 +20,4 @@
     <?php echo $__env->yieldPushContent('scripts'); ?>
 </body>
 </html>
-<?php /**PATH C:\laragon\www\Project\club-panahan\resources\views/layouts/auth.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\laragon\www\Project-KP-Archery\resources\views/layouts/auth.blade.php ENDPATH**/ ?>

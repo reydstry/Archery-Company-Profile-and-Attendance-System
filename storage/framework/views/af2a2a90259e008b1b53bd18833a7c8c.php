@@ -172,4 +172,4 @@
         </section>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 </nav>
-<?php /**PATH C:\laragon\www\Project\club-panahan\resources\views/layouts/sidebar.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\laragon\www\Project-KP-Archery\resources\views/layouts/sidebar.blade.php ENDPATH**/ ?>

@@ -11,63 +11,152 @@
 
         @php
             $testimonials = [
-                ['name' => 'Sarah Johnson',  'role' => 'Peserta Program Advanced',  'stars' => 4, 'text' => 'Slate helps you see how many more days you need to work to reach your financial goal for the month and year.'],
-                ['name' => 'Michael Chen',   'role' => 'Peserta Program Kompetisi', 'stars' => 5, 'text' => 'Pelatihan yang sangat profesional dengan fasilitas lengkap. Instruktur sangat berpengalaman dan sabar dalam mengajar.'],
-                ['name' => 'Rina Wijaya',    'role' => 'Peserta Program Pemula',    'stars' => 5, 'text' => 'Sebagai pemula, saya sangat terbantu dengan metode pengajaran yang mudah dipahami. Dalam 3 bulan sudah bisa memanah dengan baik!'],
-                ['name' => 'David Kusuma',   'role' => 'Peserta Les Privat',        'stars' => 4, 'text' => 'Les privat sangat membantu untuk meningkatkan teknik secara cepat. Jadwal yang fleksibel juga cocok untuk saya yang sibuk bekerja.'],
-                ['name' => 'Lisa Permata',   'role' => 'Peserta Program Menengah',  'stars' => 5, 'text' => 'Lingkungan latihan yang nyaman dan supportif. Sesama peserta juga sangat ramah dan saling membantu. Highly recommended!'],
-                ['name' => 'Ahmad Rizki',    'role' => 'Peserta Program Advanced',  'stars' => 4, 'text' => 'Program advanced benar-benar menantang dan meningkatkan skill saya ke level profesional. Sangat puas dengan hasilnya!'],
+                [
+                    'name' => 'Coach Agus Supriyanto',
+                    'role' => 'Ulasan Google', 
+                    'stars' => 5,
+                    'text' => 'Tempat latihan panahan yg sangat representative, lengkap banget peralatannya. Dari pemula sampai kelas atlet bisa di sini. Buat orang yg cuman pengen liat orang manah juga bisa di sini. Lapaaang dan luaaaass banget.',
+                    'photo' => null,
+                    'link' => 'https://share.google/EkwBqtTqDNigh9Sby'
+                ],
+                [
+                    'name' => 'Salira Bandung Batagor Kuah Balikpapan',
+                    'role' => 'Ulasan Google',
+                    'stars' => 5,
+                    'text' => 'Tempat latihan panahan profesional nih. Dari kelas pemula sampai dengan kelas "legolas" hahaha. Buat anak-anak sampai dengan dewasa bisa latihan di sini. Dari pagi sampai malam juga boleh.',
+                    'photo' => null,
+                    'link' => 'https://share.google/eHSthxKY5URynkvbg'
+                ],
+                [
+                    'name' => 'Vicky Network',
+                    'role' => 'Ulasan Google', 
+                    'stars' => 5,
+                    'text' => 'Memanah juga merupakan cabang olahraga yang cukup popluer di era sekarang. Sehingga banyak ditemukan sekolah panahan dan tersebar hampir di seluruh kota-kota besar di Indonesia salah satunya balikpapan.',
+                    'photo' => null,
+                    'link' => 'https://maps.app.goo.gl/8gAEfCdf891RiZ9d7'
+                ],
+                [
+                    'name' => 'Yani Banjar',
+                    'role' => 'Ulasan Google',
+                    'stars' => 5,
+                    'text' => 'Tempat latihan memanah dan berkuda yg asek dan luas. Para pelatih dan staf yg ramah ramah',
+                    'photo' => null,
+                    'link' => 'https://share.google/pkURLlvNX7mUZfAeW'
+                ],
+                [
+                    'name' => 'Tegar Septiyanto',
+                    'role' => 'Ulasan Google',
+                    'stars' => 5,
+                    'text' => 'Buat yg mau latihan panahan alias olahraga kekinian tempat ini cocok banget.',
+                    'photo' => null,
+                    'link' => 'https://share.google/FiXHLH9qTEdSHTjty'
+                ],
+                [
+                    'name' => 'Yuti Iban',
+                    'role' => 'Ulasan Google',
+                    'stars' => 5,
+                    'text' => 'Tempat latihan panahan yang bagus. Ada toilet dan mushola yg bersih, juga tempat menunggu yg nyaman.',
+                    'photo' => null,
+                    'link' => 'https://share.google/ZcySbC2yPBn03hVj2'
+                ],
             ];
         @endphp
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            @foreach($testimonials as $t)
+        {{-- Responsive grid: 1 col mobile, 2 col tablet, 3 col desktop --}}
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            @foreach($testimonials as $index => $t)
+            @php
+                $hasLink = isset($t['link']) && !empty($t['link']);
+                $isGoogleReview = isset($t['role']) && $t['role'] === 'Ulasan Google';
+            @endphp
+            
+            @if($hasLink)
+            <a href="{{ $t['link'] }}" target="_blank" class="relative group block">
+            @else
             <div class="relative group">
-            <!-- Card -->
-                    <div class="liquid-glass relative p-6 text-center transition-transform duration-300 hover:scale-105"
-                        style="box-shadow: 0 8px 32px rgba(0,0,0,0.25);"
-                        onmouseenter="this.classList.add('is-hovered')"
-                        onmouseleave="this.classList.remove('is-hovered')">
+            @endif
+                {{-- Card: fixed height, flex column so content stretches and footer stays at bottom --}}
+                <div class="liquid-glass relative flex flex-col h-[340px] sm:h-[360px] p-5 sm:p-6 text-center transition-transform duration-300 hover:scale-[1.03]"
+                     style="box-shadow: 0 8px 32px rgba(0,0,0,0.25);"
+                     onmouseenter="this.classList.add('is-hovered')"
+                     onmouseleave="this.classList.remove('is-hovered')">
 
-                        <!-- Shine -->
-                        <span class="shine"></span>
+                    {{-- Shine --}}
+                    <span class="shine"></span>
 
+                    @if($isGoogleReview)
+                    {{-- Google Badge --}}
+                    <div class="flex items-center gap-1.5 mb-3 flex-shrink-0">
+                        <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 48 48" fill="none">
+                            <path d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z" fill="#FFC107"/>
+                            <path d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z" fill="#FF3D00"/>
+                            <path d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0124 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z" fill="#4CAF50"/>
+                            <path d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 01-4.087 5.571l.003-.002 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z" fill="#1976D2"/>
+                        </svg>
+                        <span class="text-white/50 text-xs font-semibold">GOOGLE REVIEW</span>
+                    </div>
+                    @endif
 
-                    <!-- Quote icon -->
-                    <div class="text-yellow-400/30 text-6xl font-serif leading-none mb-2">"</div>
+                    {{-- Quote icon --}}
+                    <div class="text-yellow-400/30 text-5xl font-serif leading-none mb-2 flex-shrink-0">&ldquo;</div>
 
-                    <!-- Text -->
-                    <p class="text-white/70 text-sm leading-relaxed mb-5 italic">{{ $t['text'] }}</p>
+                    {{-- Text: flex-1 fills remaining space, line-clamp for truncation --}}
+                    <p class="text-white/70 text-sm leading-relaxed italic flex-1 overflow-hidden line-clamp-5">{{ $t['text'] }}</p>
 
-                    <!-- Divider -->
-                    <div class="w-full h-px bg-white/10 mb-4"></div>
+                    {{-- Divider --}}
+                    <div class="w-full h-px bg-white/10 my-4 flex-shrink-0"></div>
 
-                    <!-- Profile + Stars -->
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-3">
-                            <div class="relative">
+                    {{-- Profile + Stars: always pinned to bottom --}}
+                    <div class="flex items-center justify-between flex-shrink-0">
+                        <div class="flex items-center gap-3 min-w-0">
+                            <div class="relative flex-shrink-0">
                                 <div class="absolute inset-0 bg-yellow-500/30 rounded-full blur-md scale-110 pointer-events-none"></div>
-                                <img src="https://ui-avatars.com/api/?name={{ urlencode($t['name']) }}&size=80&background=1a307b&color=fff"
-                                     alt="{{ $t['name'] }}"
-                                     class="relative w-10 h-10 rounded-full border-2 border-white/20">
+                                @if(isset($t['photo']) && !empty($t['photo']))
+                                    <img src="{{ $t['photo'] }}"
+                                         alt="{{ $t['name'] }}"
+                                         class="relative w-10 h-10 rounded-full border-2 border-white/20 object-cover"
+                                         onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name={{ urlencode($t['name']) }}&size=80&background=1a307b&color=fff'">
+                                @else
+                                    <img src="https://ui-avatars.com/api/?name={{ urlencode($t['name']) }}&size=80&background=1a307b&color=fff"
+                                         alt="{{ $t['name'] }}"
+                                         class="relative w-10 h-10 rounded-full border-2 border-white/20">
+                                @endif
                             </div>
-                            <div>
-                                <p class="text-white font-semibold text-sm">{{ $t['name'] }}</p>
+                            <div class="min-w-0">
+                                <p class="text-white font-semibold text-sm truncate">{{ $t['name'] }}</p>
                                 <p class="text-white/40 text-xs">{{ $t['role'] }}</p>
                             </div>
                         </div>
-                        <!-- Stars -->
-                        <div class="flex gap-0.5">
+                        {{-- Stars --}}
+                        <div class="flex gap-0.5 flex-shrink-0">
                             @for($i = 1; $i <= 5; $i++)
-                            <svg class="w-4 h-4 {{ $i <= $t['stars'] ? 'text-yellow-400' : 'text-white/20' }}" fill="currentColor" viewBox="0 0 20 20">
+                            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 {{ $i <= $t['stars'] ? 'text-yellow-400' : 'text-white/20' }}" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
                             </svg>
                             @endfor
                         </div>
                     </div>
+
+                    @if($hasLink)
+                    {{-- Click to view full review --}}
+                    <div class="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+                        <div class="flex items-center gap-1 text-xs text-blue-400 font-semibold bg-blue-500/20 px-2 py-1 rounded-lg backdrop-blur-sm">
+                            <span>Lihat lengkap</span>
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                            </svg>
+                        </div>
+                    </div>
+                    @endif
                 </div>
+
+            @if($hasLink)
+            </a>
+            @else
             </div>
-            @endforeach
+            @endif
+            @endforeach 
         </div>
+        
     </div>
 </div>

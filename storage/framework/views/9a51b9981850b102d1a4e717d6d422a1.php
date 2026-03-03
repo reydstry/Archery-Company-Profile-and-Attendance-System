@@ -66,6 +66,14 @@ window.galleryTab = function(category) {
 window.viewBerita = function(id) {
     window.location.href = '/berita/' + id;
 };
+
+// Handle hash change for smooth scroll
+window.addEventListener('hashchange', function() {
+    const element = document.querySelector(window.location.hash);
+    if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+});
 </script>
 <?php $__env->stopPush(); ?>
 

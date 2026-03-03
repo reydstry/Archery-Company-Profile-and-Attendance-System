@@ -74,4 +74,4 @@
         <?php endif; ?>
     });
 </script>
-<?php /**PATH C:\laragon\www\Project\club-panahan\resources\views/components/toast-container.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\laragon\www\Project-KP-Archery\resources\views/components/toast-container.blade.php ENDPATH**/ ?>

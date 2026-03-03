@@ -171,4 +171,4 @@ function togglePassword() {
 }
 </script>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.auth', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\laragon\www\Project\club-panahan\resources\views/auth/login.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.auth', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\laragon\www\Project-KP-Archery\resources\views/auth/login.blade.php ENDPATH**/ ?>

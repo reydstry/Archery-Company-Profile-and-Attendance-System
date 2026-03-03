@@ -1,14 +1,12 @@
-@extends('layouts.admin')
+<?php $__env->startSection('title', 'News'); ?>
+<?php $__env->startSection('subtitle', 'Manage club news and announcements'); ?>
 
-@section('title', 'News')
-@section('subtitle', 'Manage club news and announcements')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div x-data="newsData()" x-init="loadNews()" class="space-y-6">
     
     <!-- Header Actions -->
     <div class="card-animate flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-4">
-        <div class="flex-1 w-full">
+        <div class="flex-1 w-full sm:max-w-md">
                  <input type="search" x-model="search" placeholder="Search news..." 
                      class="w-full px-3 py-2 sm:px-4 sm:py-3 text-sm rounded-xl border border-slate-200 focus:ring-2 focus:ring-[#1a307b] focus:border-transparent outline-none transition">
         </div>
@@ -22,36 +20,38 @@
     </div>
 
     <!-- News List -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="space-y-4">
         <template x-if="loading">
-            <div class="col-span-full text-center py-12 text-slate-400">Loading...</div>
+            <div class="text-center py-12 text-slate-400">Loading...</div>
         </template>
         <template x-if="!loading && filteredNews.length === 0">
-            <div class="col-span-full text-center py-12 text-slate-400">No news found</div>
+            <div class="text-center py-12 text-slate-400">No news found</div>
         </template>
         <template x-for="article in filteredNews" :key="article.id">
             <div class="card-animate bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg transition-all overflow-hidden">
-                <template x-if="article.photo_url">
-                    <img :src="article.photo_url" :alt="article.title" 
-                            class="w-full h-48 object-cover">
-                </template>
-                <template x-if="!article.photo_url">
-                    <div class="w-full h-48 bg-[#1a307b]/10 flex items-center justify-center">
-                        <svg class="w-20 h-20 text-[#1a307b]/50" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z"/></svg>
-                    </div>
-                </template>
-                <div class="p-5 space-y-3">
-                    <div class="flex items-start justify-between gap-2">
-                        <h3 class="font-bold text-slate-800 text-lg leading-tight" x-text="article.title"></h3>
-                    </div>
-                    <p class="text-xs sm:text-sm text-slate-600 line-clamp-2" x-text="article.content"></p>
-                    <div class="flex items-center gap-4 text-xs text-slate-500 pt-2 border-t border-slate-100">
-                        <div class="text-[10px] sm:text-xs text-slate-500 shrink-0" x-text="formatDate(article.publish_date)"></div>
+                <div class="p-4 sm:p-6">
+                    <div class="flex items-start gap-3 sm:gap-6">
+                        <template x-if="article.photo_url">
+                            <img :src="article.photo_url" :alt="article.title" 
+                                 class="w-20 h-16 sm:w-32 sm:h-24 object-cover rounded-xl shrink-0">
+                        </template>
+                        <template x-if="!article.photo_url">
+                            <div class="w-20 h-16 sm:w-32 sm:h-24 bg-[#1a307b]/10 rounded-xl shrink-0 flex items-center justify-center">
+                                <svg class="w-8 h-8 sm:w-12 sm:h-12 text-[#1a307b]/50" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z"/></svg>
+                            </div>
+                        </template>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-start justify-between gap-2 sm:gap-4 mb-1 sm:mb-2">
+                                <h3 class="font-bold text-slate-800 text-sm sm:text-lg" x-text="article.title"></h3>
+                                <div class="text-[10px] sm:text-xs text-slate-500 shrink-0" x-text="formatDate(article.publish_date)"></div>
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-600 line-clamp-2" x-text="article.content"></p>
+                        </div>
                     </div>
                 </div>
-                <div class="px-4 py-3 sm:px-6 sm:py-4 bg-[#1a307b] border-t border-slate-100 flex items-center justify-end gap-2">
+                <div class="px-4 py-3 sm:px-6 sm:py-4 bg-slate-50 border-t border-slate-100 flex items-center justify-end gap-2">
                         <button @click="openEditModal(article)" 
-                            class="px-3 py-1.5 sm:px-4 sm:py-2 text-white hover:bg-white/20 rounded-lg font-medium text-xs sm:text-sm transition">
+                            class="px-3 py-1.5 sm:px-4 sm:py-2 text-[#1a307b] hover:bg-[#1a307b]/10 rounded-lg font-medium text-xs sm:text-sm transition">
                         Edit
                     </button>
                     <button @click="confirmDelete(article)" 
@@ -65,11 +65,11 @@
 
     <!-- Add/Edit Modal -->
     <div x-show="showModal" x-cloak @click.self="closeModal()"
-         class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+         class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto">
         <div @click.away="closeModal()" 
-             class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full my-8 max-h-[90vh] overflow-y-auto"
+             class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full my-8"
              x-transition>
-            <div class="sticky top-0 bg-[#1a307b] text-white px-6 py-4 rounded-t-2xl flex items-center justify-between z-10">
+            <div class="sticky top-0 bg-[#1a307b] text-white px-6 py-4 rounded-t-2xl flex items-center justify-between">
                 <h3 class="text-lg font-bold" x-text="editingNews ? 'Edit News' : 'Add New News'"></h3>
                 <button @click="closeModal()" class="text-white/80 hover:text-white">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
@@ -141,87 +141,9 @@
             </div>
         </div>
     </div>
-
-    <!-- Success Modal -->
-    <div x-show="showSuccessModal" x-cloak @click.self="closeSuccessModal()"
-         class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-         x-transition:enter="transition ease-out duration-200"
-         x-transition:enter-start="opacity-0"
-         x-transition:enter-end="opacity-100"
-         x-transition:leave="transition ease-in duration-150"
-         x-transition:leave-start="opacity-100"
-         x-transition:leave-end="opacity-0">
-        <div class="bg-white rounded-2xl shadow-2xl p-6 sm:p-8 max-w-md w-full mx-4 transform"
-             x-show="showSuccessModal"
-             x-transition:enter="transition ease-out duration-300"
-             x-transition:enter-start="opacity-0 scale-95 translate-y-4"
-             x-transition:enter-end="opacity-100 scale-100 translate-y-0"
-             x-transition:leave="transition ease-in duration-200"
-             x-transition:leave-start="opacity-100 scale-100 translate-y-0"
-             x-transition:leave-end="opacity-0 scale-95 translate-y-4">
-            <div class="text-center">
-                <!-- Success Icon -->
-                <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-100 mb-4">
-                    <svg class="h-10 w-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                    </svg>
-                </div>
-                
-                <!-- Title -->
-                <h3 class="text-xl font-bold text-slate-900 mb-2">Berhasil Disimpan!</h3>
-                
-                <!-- Message -->
-                <p class="text-slate-600 mb-6" x-text="successMessage"></p>
-                
-                <!-- Button -->
-                <button @click="closeSuccessModal()" class="w-full px-6 py-3 bg-[#1a307b] hover:bg-[#152866] text-white rounded-xl font-semibold transition-all duration-200 active:scale-95">
-                    Oke, Mengerti
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Error Modal -->
-    <div x-show="showErrorModal" x-cloak @click.self="closeErrorModal()"
-         class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-         x-transition:enter="transition ease-out duration-200"
-         x-transition:enter-start="opacity-0"
-         x-transition:enter-end="opacity-100"
-         x-transition:leave="transition ease-in duration-150"
-         x-transition:leave-start="opacity-100"
-         x-transition:leave-end="opacity-0">
-        <div class="bg-white rounded-2xl shadow-2xl p-6 sm:p-8 max-w-md w-full mx-4 transform"
-             x-show="showErrorModal"
-             x-transition:enter="transition ease-out duration-300"
-             x-transition:enter-start="opacity-0 scale-95 translate-y-4"
-             x-transition:enter-end="opacity-100 scale-100 translate-y-0"
-             x-transition:leave="transition ease-in duration-200"
-             x-transition:leave-start="opacity-100 scale-100 translate-y-0"
-             x-transition:leave-end="opacity-0 scale-95 translate-y-4">
-            <div class="text-center">
-                <!-- Error Icon -->
-                <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-red-100 mb-4">
-                    <svg class="h-10 w-10 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                    </svg>
-                </div>
-                
-                <!-- Title -->
-                <h3 class="text-xl font-bold text-slate-900 mb-2">Terjadi Kesalahan!</h3>
-                
-                <!-- Message -->
-                <p class="text-slate-600 mb-6" x-text="errorMessage"></p>
-                
-                <!-- Button -->
-                <button @click="closeErrorModal()" class="w-full px-6 py-3 bg-[#1a307b] hover:bg-[#152866] text-white rounded-xl font-semibold transition-all duration-200 active:scale-95">
-                    Oke, Mengerti
-                </button>
-            </div>
-        </div>
-    </div>
 </div>
 
-@push('scripts')
+<?php $__env->startPush('scripts'); ?>
 <script>
 function newsData() {
     return {
@@ -232,10 +154,6 @@ function newsData() {
         deleting: false,
         showModal: false,
         showDeleteConfirm: false,
-        showSuccessModal: false,
-        showErrorModal: false,
-        successMessage: '',
-        errorMessage: '',
         editingNews: null,
         newsToDelete: null,
         photoFile: null,
@@ -261,26 +179,6 @@ function newsData() {
             return date.toLocaleDateString('id-ID', { year: 'numeric', month: 'short', day: 'numeric' });
         },
         
-        showSuccessMessage(message) {
-            this.successMessage = message;
-            this.showSuccessModal = true;
-        },
-        
-        closeSuccessModal() {
-            this.showSuccessModal = false;
-            this.successMessage = '';
-        },
-        
-        showErrorMessage(message) {
-            this.errorMessage = message;
-            this.showErrorModal = true;
-        },
-        
-        closeErrorModal() {
-            this.showErrorModal = false;
-            this.errorMessage = '';
-        },
-        
         async loadNews() {
             if (this.loading) return; // Prevent multiple simultaneous loads
             
@@ -302,7 +200,7 @@ function newsData() {
             } catch (error) {
                 console.error('Failed to load news:', error);
                 const errorMsg = error?.response?.data?.message || error?.message || 'Failed to load news data';
-                this.showErrorMessage(errorMsg);
+                showToast(errorMsg, 'error');
                 this.news = [];
             } finally {
                 this.loading = false;
@@ -322,7 +220,7 @@ function newsData() {
         openEditModal(article) {
             // Validate article object
             if (!article || !article.id) {
-                this.showErrorMessage('Invalid article data');
+                showToast('Invalid article data', 'error');
                 return;
             }
             
@@ -353,7 +251,7 @@ function newsData() {
             // Validate file type
             const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
             if (!validTypes.includes(file.type)) {
-                this.showErrorMessage('Only JPG, PNG, and GIF images are allowed');
+                showToast('Only JPG, PNG, and GIF images are allowed', 'error');
                 if (this.$refs.photoInput) {
                     this.$refs.photoInput.value = '';
                 }
@@ -363,7 +261,7 @@ function newsData() {
             // Validate file size (max 5MB)
             const maxSize = 5 * 1024 * 1024; // 5MB
             if (file.size > maxSize) {
-                this.showErrorMessage('Image size must be less than 5MB');
+                showToast('Image size must be less than 5MB', 'error');
                 if (this.$refs.photoInput) {
                     this.$refs.photoInput.value = '';
                 }
@@ -376,7 +274,7 @@ function newsData() {
                 this.photoPreview = e.target.result;
             };
             reader.onerror = () => {
-                this.showErrorMessage('Failed to read image file');
+                showToast('Failed to read image file', 'error');
                 this.photoFile = null;
                 this.photoPreview = null;
             };
@@ -394,40 +292,40 @@ function newsData() {
         async saveNews() {
             // Prevent double-submit
             if (this.saving) {
-                this.showErrorMessage('Saving in progress...');
+                showToast('Saving in progress...', 'warning');
                 return;
             }
             
             // Validate form
             if (!this.form.title || this.form.title.trim() === '') {
-                this.showErrorMessage('Title is required');
+                showToast('Title is required', 'error');
                 return;
             }
             
             if (this.form.title.trim().length < 5) {
-                this.showErrorMessage('Title must be at least 5 characters');
+                showToast('Title must be at least 5 characters', 'error');
                 return;
             }
             
             if (!this.form.content || this.form.content.trim() === '') {
-                this.showErrorMessage('Content is required');
+                showToast('Content is required', 'error');
                 return;
             }
             
             if (this.form.content.trim().length < 10) {
-                this.showErrorMessage('Content must be at least 10 characters');
+                showToast('Content must be at least 10 characters', 'error');
                 return;
             }
             
             if (!this.form.publish_date || this.form.publish_date.trim() === '') {
-                this.showErrorMessage('Publish date is required');
+                showToast('Publish date is required', 'error');
                 return;
             }
             
             // Validate date format
             const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
             if (!dateRegex.test(this.form.publish_date)) {
-                this.showErrorMessage('Invalid date format');
+                showToast('Invalid date format', 'error');
                 return;
             }
             
@@ -465,7 +363,7 @@ function newsData() {
                         await this.loadNews();
                     }
                     
-                    this.showSuccessMessage('News berhasil diperbarui');
+                    showToast('✓ News updated successfully', 'success');
                 } else {
                     result = await API.post('/admin/news', formData);
                     
@@ -475,14 +373,14 @@ function newsData() {
                     }
                     
                     this.news.unshift(result.data);
-                    this.showSuccessMessage('News berhasil ditambahkan');
+                    showToast('✓ News added successfully', 'success');
                 }
                 
                 this.closeModal();
             } catch (error) {
                 console.error('Failed to save news:', error);
                 const errorMsg = error?.response?.data?.message || error?.message || 'Failed to save news';
-                this.showErrorMessage(errorMsg);
+                showToast(errorMsg, 'error');
             } finally {
                 this.saving = false;
             }
@@ -491,7 +389,7 @@ function newsData() {
         confirmDelete(article) {
             // Validate article
             if (!article || !article.id) {
-                this.showErrorMessage('Invalid article data');
+                showToast('Invalid article data', 'error');
                 return;
             }
             
@@ -502,14 +400,14 @@ function newsData() {
         async deleteNews() {
             // Validate news
             if (!this.newsToDelete || !this.newsToDelete.id) {
-                this.showErrorMessage('Invalid article data');
+                showToast('Invalid article data', 'error');
                 this.showDeleteConfirm = false;
                 return;
             }
             
             // Prevent double-submit
             if (this.deleting) {
-                this.showErrorMessage('Deletion in progress...');
+                showToast('Deletion in progress...', 'warning');
                 return;
             }
             
@@ -517,13 +415,13 @@ function newsData() {
             try {
                 await API.delete(`/admin/news/${this.newsToDelete.id}`);
                 this.news = this.news.filter(n => n.id !== this.newsToDelete.id);
-                this.showSuccessMessage('News berhasil dihapus');
+                showToast('✓ News deleted successfully', 'success');
                 this.showDeleteConfirm = false;
                 this.newsToDelete = null;
             } catch (error) {
                 console.error('Failed to delete news:', error);
                 const errorMsg = error?.response?.data?.message || error?.message || 'Failed to delete news';
-                this.showErrorMessage(errorMsg);
+                showToast(errorMsg, 'error');
             } finally {
                 this.deleting = false;
             }
@@ -531,5 +429,6 @@ function newsData() {
     }
 }
 </script>
-@endpush
-@endsection
+<?php $__env->stopPush(); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.admin', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\laragon\www\Project-KP-Archery\resources\views/dashboards/admin/dashboard/news.blade.php ENDPATH**/ ?>
