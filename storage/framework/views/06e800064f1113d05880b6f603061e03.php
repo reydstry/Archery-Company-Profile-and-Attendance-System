@@ -1,311 +1,192 @@
 <!-- Header -->
 <section class="relative min-h-screen py-32 
-    bg-gradient-to-b from-[#16213a] via-[#0f172a] to-[#1b2659] overflow-hidden">
-    
-    <!-- Background decorative blur -->
-    <div class="absolute top-10 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute bottom-10 right-10 w-96 h-96 bg-red-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-
+    bg-gradient-to-b from-[#16213a] to-[#1b2659] overflow-hidden">
     <div class="container mx-auto px-6 relative z-10">
+
+        <!-- Section Header -->
         <div class="text-center mb-12">
-        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
-          <?php echo e(__('gallery.header_title')); ?>
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+                <?php echo e(__('gallery.header_title')); ?>
 
-        </h1>
-        <p class="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto">
-          <?php echo e(__('gallery.header_subtitle')); ?>
+            </h1>
+            <p class="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto">
+                <?php echo e(__('gallery.header_subtitle')); ?>
 
-        </p>
-    </div>
-
-    <!-- Tabs Navigation -->
-    <div class="mb-8 sm:mb-10">
-        <div class="flex flex-wrap justify-center gap-2 sm:gap-4 border-b-2 border-gray-200 px-4">
-            <button onclick="switchTab('latihan')" id="tab-latihan" class="tab-button active px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold border-b-2 transition-colors">
-                <?php echo e(__('gallery.tab_training')); ?>
-
-            </button>
-            <button onclick="switchTab('kompetisi')" id="tab-kompetisi" class="tab-button px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold border-b-2 transition-colors">
-                <?php echo e(__('gallery.tab_competition')); ?>
-
-            </button>
-            <button onclick="switchTab('event')" id="tab-event" class="tab-button px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold border-b-2 transition-colors">
-                <?php echo e(__('gallery.tab_group_selfie')); ?>
-
-            </button>
+            </p>
         </div>
-    </div>
 
-    <!-- Tab Content: Latihan -->
-<div id="content-latihan" class="tab-content">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
-        
-        <?php if (isset($component)) { $__componentOriginald3414607778ba630b571a3ed5dcf2390 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginald3414607778ba630b571a3ed5dcf2390 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.galeri.card','data' => ['image' => asset('asset/img/galeri/latihan/Latihan dasar.jpg'),'title' => 'Latihan Rutin Mingguan','alt' => 'Latihan Rutin']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('galeri.card'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['image' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(asset('asset/img/galeri/latihan/Latihan dasar.jpg')),'title' => 'Latihan Rutin Mingguan','alt' => 'Latihan Rutin']); ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginald3414607778ba630b571a3ed5dcf2390)): ?>
-<?php $attributes = $__attributesOriginald3414607778ba630b571a3ed5dcf2390; ?>
-<?php unset($__attributesOriginald3414607778ba630b571a3ed5dcf2390); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginald3414607778ba630b571a3ed5dcf2390)): ?>
-<?php $component = $__componentOriginald3414607778ba630b571a3ed5dcf2390; ?>
-<?php unset($__componentOriginald3414607778ba630b571a3ed5dcf2390); ?>
-<?php endif; ?>
+        <!-- Tab Navigation -->
+        <div class="flex justify-center mb-10">
+            <div class="tab-switch" id="tab-switch">
+                <div id="tab-bubble"></div>
 
-        <?php if (isset($component)) { $__componentOriginald3414607778ba630b571a3ed5dcf2390 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginald3414607778ba630b571a3ed5dcf2390 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.galeri.card','data' => ['image' => asset('asset/img/galeri/latihan/Latihan dasar1.png'),'title' => 'Latihan Rutin','alt' => 'Latihan Rutin']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('galeri.card'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['image' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(asset('asset/img/galeri/latihan/Latihan dasar1.png')),'title' => 'Latihan Rutin','alt' => 'Latihan Rutin']); ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginald3414607778ba630b571a3ed5dcf2390)): ?>
-<?php $attributes = $__attributesOriginald3414607778ba630b571a3ed5dcf2390; ?>
-<?php unset($__attributesOriginald3414607778ba630b571a3ed5dcf2390); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginald3414607778ba630b571a3ed5dcf2390)): ?>
-<?php $component = $__componentOriginald3414607778ba630b571a3ed5dcf2390; ?>
-<?php unset($__componentOriginald3414607778ba630b571a3ed5dcf2390); ?>
-<?php endif; ?>
+                <button class="tab-link tab-active" data-tab="latihan"
+                    onmouseenter="document.getElementById('tab-bubble').classList.add('is-hovered')"
+                    onmouseleave="document.getElementById('tab-bubble').classList.remove('is-hovered')">
+                    <?php echo e(__('gallery.tab_training')); ?>
 
-        <?php if (isset($component)) { $__componentOriginald3414607778ba630b571a3ed5dcf2390 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginald3414607778ba630b571a3ed5dcf2390 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.galeri.card','data' => ['image' => asset('asset/img/galeri/latihan/Latihan dasar2.png'),'title' => 'Latihan Rutin','alt' => 'Latihan Rutin']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('galeri.card'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['image' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(asset('asset/img/galeri/latihan/Latihan dasar2.png')),'title' => 'Latihan Rutin','alt' => 'Latihan Rutin']); ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginald3414607778ba630b571a3ed5dcf2390)): ?>
-<?php $attributes = $__attributesOriginald3414607778ba630b571a3ed5dcf2390; ?>
-<?php unset($__attributesOriginald3414607778ba630b571a3ed5dcf2390); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginald3414607778ba630b571a3ed5dcf2390)): ?>
-<?php $component = $__componentOriginald3414607778ba630b571a3ed5dcf2390; ?>
-<?php unset($__componentOriginald3414607778ba630b571a3ed5dcf2390); ?>
-<?php endif; ?>
+                </button>
 
-    </div>
-</div>
+                <button class="tab-link" data-tab="kompetisi"
+                    onmouseenter="document.getElementById('tab-bubble').classList.add('is-hovered')"
+                    onmouseleave="document.getElementById('tab-bubble').classList.remove('is-hovered')">
+                    <?php echo e(__('gallery.tab_competition')); ?>
 
-<!-- Tab Content: Kompetisi -->
-<div id="content-kompetisi" class="tab-content hidden">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
-        
-        <?php if (isset($component)) { $__componentOriginald3414607778ba630b571a3ed5dcf2390 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginald3414607778ba630b571a3ed5dcf2390 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.galeri.card','data' => ['image' => asset('asset/img/galeri/kompetisi/kompetisi manah1.jpg'),'title' => 'Seleksi kejurnas provinsi','alt' => 'Seleksi kejurnas provinsi']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('galeri.card'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['image' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(asset('asset/img/galeri/kompetisi/kompetisi manah1.jpg')),'title' => 'Seleksi kejurnas provinsi','alt' => 'Seleksi kejurnas provinsi']); ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginald3414607778ba630b571a3ed5dcf2390)): ?>
-<?php $attributes = $__attributesOriginald3414607778ba630b571a3ed5dcf2390; ?>
-<?php unset($__attributesOriginald3414607778ba630b571a3ed5dcf2390); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginald3414607778ba630b571a3ed5dcf2390)): ?>
-<?php $component = $__componentOriginald3414607778ba630b571a3ed5dcf2390; ?>
-<?php unset($__componentOriginald3414607778ba630b571a3ed5dcf2390); ?>
-<?php endif; ?>
+                </button>
 
-        <?php if (isset($component)) { $__componentOriginald3414607778ba630b571a3ed5dcf2390 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginald3414607778ba630b571a3ed5dcf2390 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.galeri.card','data' => ['image' => asset('asset/img/galeri/kompetisi/kompetisi manah.png'),'title' => 'Seleksi kejurnas provinsi','alt' => 'Seleksi kejurnas provinsi']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('galeri.card'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['image' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(asset('asset/img/galeri/kompetisi/kompetisi manah.png')),'title' => 'Seleksi kejurnas provinsi','alt' => 'Seleksi kejurnas provinsi']); ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginald3414607778ba630b571a3ed5dcf2390)): ?>
-<?php $attributes = $__attributesOriginald3414607778ba630b571a3ed5dcf2390; ?>
-<?php unset($__attributesOriginald3414607778ba630b571a3ed5dcf2390); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginald3414607778ba630b571a3ed5dcf2390)): ?>
-<?php $component = $__componentOriginald3414607778ba630b571a3ed5dcf2390; ?>
-<?php unset($__componentOriginald3414607778ba630b571a3ed5dcf2390); ?>
-<?php endif; ?>
+                <button class="tab-link" data-tab="event"
+                    onmouseenter="document.getElementById('tab-bubble').classList.add('is-hovered')"
+                    onmouseleave="document.getElementById('tab-bubble').classList.remove('is-hovered')">
+                    <?php echo e(__('gallery.tab_group_selfie')); ?>
 
-        <?php if (isset($component)) { $__componentOriginald3414607778ba630b571a3ed5dcf2390 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginald3414607778ba630b571a3ed5dcf2390 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.galeri.card','data' => ['image' => asset('asset/img/galeri/kompetisi/penghargaan.jpg'),'title' => 'Seleksi kejurnas provinsi','alt' => 'Seleksi kejurnas provinsi']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('galeri.card'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['image' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(asset('asset/img/galeri/kompetisi/penghargaan.jpg')),'title' => 'Seleksi kejurnas provinsi','alt' => 'Seleksi kejurnas provinsi']); ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginald3414607778ba630b571a3ed5dcf2390)): ?>
-<?php $attributes = $__attributesOriginald3414607778ba630b571a3ed5dcf2390; ?>
-<?php unset($__attributesOriginald3414607778ba630b571a3ed5dcf2390); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginald3414607778ba630b571a3ed5dcf2390)): ?>
-<?php $component = $__componentOriginald3414607778ba630b571a3ed5dcf2390; ?>
-<?php unset($__componentOriginald3414607778ba630b571a3ed5dcf2390); ?>
-<?php endif; ?>
+                </button>
+            </div>
+        </div>
+
+        <!-- Tab Content: Latihan -->
+        <div id="content-latihan" class="tab-content" x-data="galleryTab('training')" x-init="loadGalleries()">
+            <!-- Loading State -->
+            <div x-show="loading" class="flex justify-center items-center py-20">
+                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-white"></div>
+            </div>
+
+            <!-- Empty State -->
+            <div x-show="!loading && galleries.length === 0" class="text-center py-20">
+                <p class="text-gray-400 text-lg">Belum ada foto latihan</p>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div x-show="!loading && galleries.length > 0" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+                <template x-for="item in galleries" :key="item.id">
+                    <div class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300"
+                         onmouseenter="this.classList.add('is-hovered')"
+                         onmouseleave="this.classList.remove('is-hovered')">
+                        <span class="shine"></span>
+                        <img :src="item.photo_url"
+                             :alt="item.title"
+                             class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
+
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="absolute bottom-0 left-0 right-0 p-4">
+                                <h3 class="text-white font-semibold text-base sm:text-lg mb-1" x-text="item.title"></h3>
+                                <p x-show="item.description" class="text-white/80 text-xs sm:text-sm mt-1" x-text="item.description"></p>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+
+        <!-- Tab Content: Kompetisi -->
+        <div id="content-kompetisi" class="tab-content hidden" x-data="galleryTab('competition')" x-init="loadGalleries()">
+            <!-- Loading State -->
+            <div x-show="loading" class="flex justify-center items-center py-20">
+                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-white"></div>
+            </div>
+
+            <!-- Empty State -->
+            <div x-show="!loading && galleries.length === 0" class="text-center py-20">
+                <p class="text-gray-400 text-lg">Belum ada foto kompetisi</p>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div x-show="!loading && galleries.length > 0" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+                <template x-for="item in galleries" :key="item.id">
+                    <div class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300"
+                         onmouseenter="this.classList.add('is-hovered')"
+                         onmouseleave="this.classList.remove('is-hovered')">
+                        <span class="shine"></span>
+                        <img :src="item.photo_url"
+                             :alt="item.title"
+                             class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
+
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="absolute bottom-0 left-0 right-0 p-4">
+                                <h3 class="text-white font-semibold text-base sm:text-lg mb-1" x-text="item.title"></h3>
+                                <p x-show="item.description" class="text-white/80 text-xs sm:text-sm mt-1" x-text="item.description"></p>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+
+        <!-- Tab Content: Event -->
+        <div id="content-event" class="tab-content hidden" x-data="galleryTab('group_selfie')" x-init="loadGalleries()">
+            <!-- Loading State -->
+            <div x-show="loading" class="flex justify-center items-center py-20">
+                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-white"></div>
+            </div>
+
+            <!-- Empty State -->
+            <div x-show="!loading && galleries.length === 0" class="text-center py-20">
+                <p class="text-gray-400 text-lg">Belum ada foto group selfie</p>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div x-show="!loading && galleries.length > 0" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+                <template x-for="item in galleries" :key="item.id">
+                    <div class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300"
+                         onmouseenter="this.classList.add('is-hovered')"
+                         onmouseleave="this.classList.remove('is-hovered')">
+                        <span class="shine"></span>
+                        <img :src="item.photo_url"
+                             :alt="item.title"
+                             class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
+
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="absolute bottom-0 left-0 right-0 p-4">
+                                <h3 class="text-white font-semibold text-base sm:text-lg mb-1" x-text="item.title"></h3>
+                                <p x-show="item.description" class="text-white/80 text-xs sm:text-sm mt-1" x-text="item.description"></p>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
 
     </div>
-</div>
+</section>
 
-<!-- Tab Content: -->
-<div id="content-event" class="tab-content hidden">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
-        
-        <?php if (isset($component)) { $__componentOriginald3414607778ba630b571a3ed5dcf2390 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginald3414607778ba630b571a3ed5dcf2390 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.galeri.card','data' => ['image' => asset('asset/img/galeri/group/baltim.jpg'),'title' => '','alt' => '']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('galeri.card'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['image' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(asset('asset/img/galeri/group/baltim.jpg')),'title' => '','alt' => '']); ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginald3414607778ba630b571a3ed5dcf2390)): ?>
-<?php $attributes = $__attributesOriginald3414607778ba630b571a3ed5dcf2390; ?>
-<?php unset($__attributesOriginald3414607778ba630b571a3ed5dcf2390); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginald3414607778ba630b571a3ed5dcf2390)): ?>
-<?php $component = $__componentOriginald3414607778ba630b571a3ed5dcf2390; ?>
-<?php unset($__componentOriginald3414607778ba630b571a3ed5dcf2390); ?>
-<?php endif; ?>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const bubble   = document.getElementById("tab-bubble");
+    const links    = document.querySelectorAll(".tab-link");
+    const contents = document.querySelectorAll(".tab-content");
 
-        <?php if (isset($component)) { $__componentOriginald3414607778ba630b571a3ed5dcf2390 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginald3414607778ba630b571a3ed5dcf2390 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.galeri.card','data' => ['image' => asset('asset/img/galeri/group/baltim1.JPG'),'title' => '','alt' => ' ']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('galeri.card'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['image' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(asset('asset/img/galeri/group/baltim1.JPG')),'title' => '','alt' => ' ']); ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginald3414607778ba630b571a3ed5dcf2390)): ?>
-<?php $attributes = $__attributesOriginald3414607778ba630b571a3ed5dcf2390; ?>
-<?php unset($__attributesOriginald3414607778ba630b571a3ed5dcf2390); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginald3414607778ba630b571a3ed5dcf2390)): ?>
-<?php $component = $__componentOriginald3414607778ba630b571a3ed5dcf2390; ?>
-<?php unset($__componentOriginald3414607778ba630b571a3ed5dcf2390); ?>
-<?php endif; ?>
+    function moveBubble(el) {
+        const switchEl   = document.getElementById("tab-switch");
+        const switchRect = switchEl.getBoundingClientRect();
+        const linkRect   = el.getBoundingClientRect();
 
-         <?php if (isset($component)) { $__componentOriginald3414607778ba630b571a3ed5dcf2390 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginald3414607778ba630b571a3ed5dcf2390 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.galeri.card','data' => ['image' => asset('asset/img/galeri/group/bkpo.png'),'title' => '','alt' => ' ']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('galeri.card'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['image' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(asset('asset/img/galeri/group/bkpo.png')),'title' => '','alt' => ' ']); ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginald3414607778ba630b571a3ed5dcf2390)): ?>
-<?php $attributes = $__attributesOriginald3414607778ba630b571a3ed5dcf2390; ?>
-<?php unset($__attributesOriginald3414607778ba630b571a3ed5dcf2390); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginald3414607778ba630b571a3ed5dcf2390)): ?>
-<?php $component = $__componentOriginald3414607778ba630b571a3ed5dcf2390; ?>
-<?php unset($__componentOriginald3414607778ba630b571a3ed5dcf2390); ?>
-<?php endif; ?>
+        bubble.style.width = linkRect.width + "px";
+        bubble.style.left  = (linkRect.left - switchRect.left) + "px";
+    }
 
-         <?php if (isset($component)) { $__componentOriginald3414607778ba630b571a3ed5dcf2390 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginald3414607778ba630b571a3ed5dcf2390 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.galeri.card','data' => ['image' => asset('asset/img/galeri/group/kejurnas.JPG'),'title' => '','alt' => ' ']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('galeri.card'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['image' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(asset('asset/img/galeri/group/kejurnas.JPG')),'title' => '','alt' => ' ']); ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginald3414607778ba630b571a3ed5dcf2390)): ?>
-<?php $attributes = $__attributesOriginald3414607778ba630b571a3ed5dcf2390; ?>
-<?php unset($__attributesOriginald3414607778ba630b571a3ed5dcf2390); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginald3414607778ba630b571a3ed5dcf2390)): ?>
-<?php $component = $__componentOriginald3414607778ba630b571a3ed5dcf2390; ?>
-<?php unset($__componentOriginald3414607778ba630b571a3ed5dcf2390); ?>
-<?php endif; ?>
-         <?php if (isset($component)) { $__componentOriginald3414607778ba630b571a3ed5dcf2390 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginald3414607778ba630b571a3ed5dcf2390 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.galeri.card','data' => ['image' => asset('asset/img/galeri/group/kejurnas1.JPG'),'title' => '','alt' => ' ']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('galeri.card'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['image' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(asset('asset/img/galeri/group/kejurnas1.JPG')),'title' => '','alt' => ' ']); ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginald3414607778ba630b571a3ed5dcf2390)): ?>
-<?php $attributes = $__attributesOriginald3414607778ba630b571a3ed5dcf2390; ?>
-<?php unset($__attributesOriginald3414607778ba630b571a3ed5dcf2390); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginald3414607778ba630b571a3ed5dcf2390)): ?>
-<?php $component = $__componentOriginald3414607778ba630b571a3ed5dcf2390; ?>
-<?php unset($__componentOriginald3414607778ba630b571a3ed5dcf2390); ?>
-<?php endif; ?>
-        <?php if (isset($component)) { $__componentOriginald3414607778ba630b571a3ed5dcf2390 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginald3414607778ba630b571a3ed5dcf2390 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.galeri.card','data' => ['image' => asset('asset/img/galeri/group/17an.png'),'title' => '','alt' => ' ']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('galeri.card'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['image' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(asset('asset/img/galeri/group/17an.png')),'title' => '','alt' => ' ']); ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginald3414607778ba630b571a3ed5dcf2390)): ?>
-<?php $attributes = $__attributesOriginald3414607778ba630b571a3ed5dcf2390; ?>
-<?php unset($__attributesOriginald3414607778ba630b571a3ed5dcf2390); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginald3414607778ba630b571a3ed5dcf2390)): ?>
-<?php $component = $__componentOriginald3414607778ba630b571a3ed5dcf2390; ?>
-<?php unset($__componentOriginald3414607778ba630b571a3ed5dcf2390); ?>
-<?php endif; ?>
-    </div>
-    
-</div>
+    // Init bubble ke tab aktif
+    const activeLink = document.querySelector(".tab-link.tab-active");
+    if (activeLink) {
+        requestAnimationFrame(() => moveBubble(activeLink));
+    }
 
-</section><?php /**PATH C:\laragon\www\Project\club-panahan\resources\views/components/galeri/hero-section.blade.php ENDPATH**/ ?>
+    links.forEach(link => {
+        link.addEventListener("mouseenter", () => moveBubble(link));
+
+        link.addEventListener("mouseleave", () => {
+            const active = document.querySelector(".tab-link.tab-active");
+            if (active) moveBubble(active);
+        });
+
+        link.addEventListener("click", () => {
+            links.forEach(l => l.classList.remove("tab-active"));
+            link.classList.add("tab-active");
+
+            const target = link.dataset.tab;
+            contents.forEach(c => c.classList.add("hidden"));
+            document.getElementById("content-" + target)?.classList.remove("hidden");
+
+            moveBubble(link);
+        });
+    });
+});
+</script><?php /**PATH C:\laragon\www\Project\club-panahan\resources\views/components/galeri/hero-section.blade.php ENDPATH**/ ?>
