@@ -112,7 +112,7 @@
                         style="box-shadow: 0 8px 32px rgba(0,0,0,0.25);"
                         onmouseenter="this.classList.add('is-hovered')"
                         onmouseleave="this.classList.remove('is-hovered')">
->>>>>>> e2398d387bee565a67bfc9447e3e48776e8d1d36
+>>>>>>> 5b278b43985a902e03c97d66198c6ed40b8d9a06
 
                         <!-- Shine -->
                         <span class="shine"></span>

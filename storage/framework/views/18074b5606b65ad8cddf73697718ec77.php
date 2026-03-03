@@ -52,7 +52,7 @@
                 </div>
             </template>
         </div>
-
+w
         <!-- Empty State -->
         <div x-show="!loading && packages.length === 0" class="text-center py-12">
             <p class="text-white/60 text-lg">Belum ada paket tersedia saat ini.</p>
