@@ -21,7 +21,7 @@
                     <div class="animate-spin rounded-full h-16 w-16 border-4 border-slate-200"></div>
                     <div class="animate-spin rounded-full h-16 w-16 border-4 border-blue-600 border-t-transparent absolute top-0"></div>
                 </div>
-                <p class="text-slate-600 font-medium">Memuat dashboard...</p>
+                <p class="text-slate-200 font-medium">Memuat dashboard...</p>
             </div>
         </div>
 

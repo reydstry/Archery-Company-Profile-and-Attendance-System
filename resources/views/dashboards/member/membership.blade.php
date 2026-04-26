@@ -9,8 +9,8 @@
     <!-- Header Section dengan Action Buttons -->
     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
         <div>
-            <h2 class="text-2xl font-bold text-slate-800">Daftar Keanggotaan</h2>
-            <p class="text-slate-600 text-sm mt-1">Daftarkan anggota keluarga, teman, atau kenalan untuk bergabung</p>
+            <h2 class="text-2xl font-bold text-white">Daftar Keanggotaan</h2>
+            <p class="text-slate-300 text-sm mt-1">Daftarkan anggota keluarga, teman, atau kenalan untuk bergabung</p>
         </div>
         <div class="flex gap-3">
             <button @click="openRegisterModal('self')"
@@ -34,7 +34,7 @@
     <div x-show="loading" class="flex justify-center items-center h-64">
         <div class="flex flex-col items-center gap-3">
             <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-            <p class="text-slate-600 text-sm">Memuat data...</p>
+            <p class="text-slate-200 text-sm">Memuat data...</p>
         </div>
     </div>
 
@@ -176,8 +176,8 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/>
                 </svg>
             </div>
-            <h3 class="text-2xl font-bold text-slate-800 mb-2">Belum Ada Member Terdaftar</h3>
-            <p class="text-slate-600 mb-8 max-w-md mx-auto">
+            <h3 class="text-2xl font-bold text-white mb-2">Belum Ada Member Terdaftar</h3>
+            <p class="text-slate-300 mb-8 max-w-md mx-auto">
                 Mulai dengan mendaftarkan diri Anda sebagai member, lalu Anda bisa mendaftarkan anggota keluarga atau teman
             </p>
             <div class="flex justify-center gap-3">

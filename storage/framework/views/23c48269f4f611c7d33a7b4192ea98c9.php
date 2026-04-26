@@ -111,7 +111,7 @@
                     <!-- Page Title & Subtitle -->
                     <div>
                         <h2 class="text-lg sm:text-2xl lg:text-3xl font-bold text-white"><?php echo $__env->yieldContent('title'); ?></h2>
-                        <p class="text-slate-500 mt-0.5 text-xs sm:text-sm"><?php echo $__env->yieldContent('subtitle'); ?></p>
+                        <p class="text-slate-300 mt-0.5 text-xs sm:text-sm"><?php echo $__env->yieldContent('subtitle'); ?></p>
                     </div>
 
                     <!-- Right Side: Action Buttons + Profile -->

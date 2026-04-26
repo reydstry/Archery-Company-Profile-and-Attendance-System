@@ -7,8 +7,8 @@
     <!-- Header -->
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
         <div>
-            <h2 class="text-2xl font-bold text-slate-800">Prestasi Saya</h2>
-            <p class="text-slate-600 mt-1">
+            <h2 class="text-2xl font-bold text-white">Prestasi Saya</h2>
+            <p class="text-slate-300 mt-1">
                 Total <span x-text="achievements.length"></span> prestasi yang telah Anda raih
             </p>
         </div>
