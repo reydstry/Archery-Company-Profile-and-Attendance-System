@@ -155,6 +155,7 @@ erDiagram
         string title
         text content
         date publish_date
+        bigint created_by FK
         timestamp created_at
         timestamp updated_at
     }
@@ -178,43 +179,7 @@ erDiagram
         string photo_path
         string category
         bool is_active
-        timestamp created_at
-        timestamp updated_at
-    }
-
-    WA_LOGS {
-        bigint id PK
-        string phone
-        text message
-        longtext response
-        string status
-        timestamp sent_at
-        timestamp created_at
-        timestamp updated_at
-    }
-
-    BROADCASTS {
-        bigint id PK
-        string title
-        date event_date
-        text message
-        int total_target
-        int total_success
-        int total_failed
-        string status
         bigint created_by FK
-        timestamp created_at
-        timestamp updated_at
-    }
-
-    BROADCAST_LOGS {
-        bigint id PK
-        bigint broadcast_id FK
-        bigint member_id FK
-        string phone_number
-        string status
-        text response
-        timestamp sent_at
         timestamp created_at
         timestamp updated_at
     }
@@ -235,8 +200,9 @@ erDiagram
     USERS ||--o{ COACHES : has_coach_profile
     USERS ||--o{ MEMBER_PACKAGES : validates
     USERS ||--o{ TRAINING_SESSIONS : creates
-    USERS ||--o{ BROADCASTS : creates
     USERS ||--o{ SESSIONS : has
+    USERS ||--o{ NEWS : posts
+    USERS ||--o{ GALLERIES : uploads
 
     MEMBERS ||--o| MEMBER_PACKAGES : has_active_package
     PACKAGES ||--o{ MEMBER_PACKAGES : assigned_to

@@ -61,21 +61,6 @@
             ],
         ],
         [
-            'title' => 'WhatsApp',
-            'items' => [
-                [
-                    'label' => 'Broadcast Event',
-                    'route' => 'admin.whatsapp.broadcast.create',
-                    'patterns' => ['admin.whatsapp.broadcast.*'],
-                ],
-                [
-                    'label' => 'Log Broadcast',
-                    'route' => 'admin.whatsapp.logs.index',
-                    'patterns' => ['admin.whatsapp.logs.*'],
-                ],
-            ],
-        ],
-        [
             'title' => 'Laporan',
             'items' => [
                 [

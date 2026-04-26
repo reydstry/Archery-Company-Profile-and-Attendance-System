@@ -15,6 +15,7 @@ class Gallery extends Model
         'photo_path',
         'category',
         'is_active',
+        'created_by',
     ];
 
     protected $appends = ['photo_url'];

@@ -149,17 +149,6 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('training-sessions/{trainingSession}/attendances', [AdminAttendanceController::class, 'store']);
         Route::put('training-sessions/{trainingSession}/attendances', [AdminAttendanceController::class, 'sync']);
 
-        // WhatsApp Blast & Logs
-        Route::get('whatsapp/recipients-count', [AdminWhatsAppController::class, 'recipientsCount']);
-        Route::post('whatsapp/blast', [AdminWhatsAppController::class, 'blast']);
-        Route::get('whatsapp/logs', [AdminWhatsAppController::class, 'logs']);
-        Route::get('whatsapp/logs/export', [AdminWhatsAppController::class, 'export']);
-        Route::get('whatsapp/settings', [WhatsAppSettingsController::class, 'show']);
-        Route::put('whatsapp/settings', [WhatsAppSettingsController::class, 'update']);
-        Route::post('whatsapp/settings/test-connection', [WhatsAppSettingsController::class, 'testConnection']);
-        Route::get('whatsapp/reminder-settings', [ReminderSettingsController::class, 'show']);
-        Route::put('whatsapp/reminder-settings', [ReminderSettingsController::class, 'update']);
-
         // Report Export
         Route::get('reports/export', [ReportController::class, 'export']);
     });

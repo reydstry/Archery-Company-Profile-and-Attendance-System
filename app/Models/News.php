@@ -16,6 +16,7 @@ class News extends Model
         'title',
         'content',
         'publish_date',
+        'created_by',
     ];
 
     protected $appends = ['photo_url'];

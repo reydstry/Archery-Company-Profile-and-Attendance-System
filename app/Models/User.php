@@ -62,11 +62,6 @@ class User extends Authenticatable
         return $this->hasMany(SocialAccount::class);
     }
 
-    public function broadcasts()
-    {
-        return $this->hasMany(Broadcast::class, 'created_by');
-    }
-
     /**
      * Get all member profiles owned/registered by this user
      */
