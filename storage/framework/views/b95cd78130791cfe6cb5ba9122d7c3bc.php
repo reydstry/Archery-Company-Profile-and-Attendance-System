@@ -1,9 +1,7 @@
-@extends('layouts.member')
+<?php $__env->startSection('title', 'Profil Saya'); ?>
+<?php $__env->startSection('subtitle', 'Kelola informasi akun dan keamanan'); ?>
 
-@section('title', 'Profil Saya')
-@section('subtitle', 'Kelola informasi akun dan keamanan')
-
-@push('styles')
+<?php $__env->startPush('styles'); ?>
 <style>
     @keyframes slideIn {
         from { opacity: 0; transform: translateY(20px); }
@@ -11,14 +9,14 @@
     }
     .card-animate { animation: slideIn 0.5s ease-out forwards; }
 </style>
-@endpush
+<?php $__env->stopPush(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="space-y-6">
 
         <!-- Back Button -->
         <div class="mb-6">
-            <a href="{{ route('member.dashboard') }}" class="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-xl border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all text-slate-700 hover:text-blue-600 font-semibold">
+            <a href="<?php echo e(route('member.dashboard')); ?>" class="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-xl border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all text-slate-700 hover:text-blue-600 font-semibold">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/>
                 </svg>
@@ -197,7 +195,7 @@
                 <div class="card-animate bg-gradient-to-br from-slate-800 via-slate-700 to-slate-800 rounded-2xl shadow-lg p-6 text-white" style="animation-delay: 0.2s">
                     <h3 class="text-lg font-bold mb-4">Quick Actions</h3>
                     <div class="space-y-2">
-                        <a href="{{ route('member.dashboard') }}"
+                        <a href="<?php echo e(route('member.dashboard')); ?>"
                            class="block px-4 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-xl transition-all">
                             <div class="flex items-center gap-3">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>
@@ -229,9 +227,9 @@
     </div>
     </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@push('scripts')
+<?php $__env->startPush('scripts'); ?>
 <script>
 
 // Auto-refresh CSRF token every 60 minutes to prevent expiry
@@ -299,11 +297,11 @@ function profileData() {
             try {
                 // For now using mock data, replace with actual API call
                 this.profile = {
-                    name: '{{ auth()->user()->name }}',
-                    email: '{{ auth()->user()->email }}',
+                    name: '<?php echo e(auth()->user()->name); ?>',
+                    email: '<?php echo e(auth()->user()->email); ?>',
                     phone: '081234567890',
                     address: 'Jl. Contoh No. 123, Jakarta',
-                    created_at: '{{ auth()->user()->created_at }}'
+                    created_at: '<?php echo e(auth()->user()->created_at); ?>'
                 };
 
                 this.stats = {
@@ -378,4 +376,6 @@ function profileData() {
     }
 }
 </script>
-@endpush
+<?php $__env->stopPush(); ?>
+
+<?php echo $__env->make('layouts.member', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH D:\laragon\www\Project-KP-Archery\resources\views/dashboards/member/profile.blade.php ENDPATH**/ ?>

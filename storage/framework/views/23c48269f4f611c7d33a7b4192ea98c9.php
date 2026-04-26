@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'Member Dashboard') - FocusOneX Archery</title>
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
+    <title><?php echo $__env->yieldContent('title', 'Member Dashboard'); ?> - FocusOneX Archery</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -27,11 +27,11 @@
             to { opacity: 1; transform: translateY(0); }
         }
     </style>
-    @stack('styles')
+    <?php echo $__env->yieldPushContent('styles'); ?>
 </head>
 <body class="bg-gradient-to-b from-[#16213a] to-[#1b2659] min-h-screen overflow-x-hidden" x-data="{ sidebarOpen: false, isMobile: window.innerWidth < 1024 }" @resize.window="isMobile = window.innerWidth < 1024; if(!isMobile) sidebarOpen = false">
     <!-- Toast Container -->
-    <div x-data="toastManager()" @show-toast.window="show($event.detail)" class="fixed top-4 right-4 z-[100] space-y-2">
+    <div x-data="toastManager()" <?php echo $__env->yieldSection(); ?>-toast.window="show($event.detail)" class="fixed top-4 right-4 z-[100] space-y-2">
         <template x-for="toast in toasts" :key="toast.id">
             <div x-show="toast.visible" x-transition
                  class="min-w-[320px] bg-white rounded-xl shadow-xl border p-4 flex items-start gap-3">
@@ -69,7 +69,7 @@
                :class="(sidebarOpen || !isMobile) ? 'translate-x-0' : '-translate-x-full'">
             <div class="h-full flex flex-col">
                 <div class="px-5 py-4 border-b border-slate-800 flex items-center justify-between">
-                    <img src="{{ asset('asset/img/logowhite.png') }}" alt="FocusOneX Archery" class="h-8 w-auto">
+                    <img src="<?php echo e(asset('asset/img/logowhite.png')); ?>" alt="FocusOneX Archery" class="h-8 w-auto">
                     <button @click="sidebarOpen = false" class="lg:hidden text-slate-300 hover:text-white">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
@@ -78,18 +78,18 @@
                 </div>
 
                 <nav class="flex-1 p-3 space-y-1 overflow-y-auto">
-                    <a href="{{ route('member.dashboard') }}" @click="if(isMobile) sidebarOpen = false"
-                       class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition {{ request()->routeIs('member.dashboard') ? 'bg-[#1a307b] text-white' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}">
+                    <a href="<?php echo e(route('member.dashboard')); ?>" @click="if(isMobile) sidebarOpen = false"
+                       class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition <?php echo e(request()->routeIs('member.dashboard') ? 'bg-[#1a307b] text-white' : 'text-slate-300 hover:bg-slate-800 hover:text-white'); ?>">
                         <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
                         <span>Dashboard</span>
                     </a>
-                    <a href="{{ route('member.membership') }}" @click="if(isMobile) sidebarOpen = false"
-                              class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition {{ request()->routeIs('member.membership') ? 'bg-[#1a307b] text-white' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}">
+                    <a href="<?php echo e(route('member.membership')); ?>" @click="if(isMobile) sidebarOpen = false"
+                              class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition <?php echo e(request()->routeIs('member.membership') ? 'bg-[#1a307b] text-white' : 'text-slate-300 hover:bg-slate-800 hover:text-white'); ?>">
                         <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
                         <span>Keanggotaan</span>
                     </a>
-                    <a href="{{ route('member.achievements') }}" @click="if(isMobile) sidebarOpen = false"
-                       class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition {{ request()->routeIs('member.achievements') ? 'bg-[#1a307b] text-white' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}">
+                    <a href="<?php echo e(route('member.achievements')); ?>" @click="if(isMobile) sidebarOpen = false"
+                       class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition <?php echo e(request()->routeIs('member.achievements') ? 'bg-[#1a307b] text-white' : 'text-slate-300 hover:bg-slate-800 hover:text-white'); ?>">
                         <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
                         <span>Prestasi</span>
                     </a>
@@ -110,20 +110,20 @@
 
                     <!-- Page Title & Subtitle -->
                     <div>
-                        <h2 class="text-lg sm:text-2xl lg:text-3xl font-bold text-white">@yield('title')</h2>
-                        <p class="text-slate-500 mt-0.5 text-xs sm:text-sm">@yield('subtitle')</p>
+                        <h2 class="text-lg sm:text-2xl lg:text-3xl font-bold text-white"><?php echo $__env->yieldContent('title'); ?></h2>
+                        <p class="text-slate-500 mt-0.5 text-xs sm:text-sm"><?php echo $__env->yieldContent('subtitle'); ?></p>
                     </div>
 
                     <!-- Right Side: Action Buttons + Profile -->
                     <div class="flex items-center gap-3">
                         <!-- Page Actions (if any) -->
-                        @stack('header-actions')
+                        <?php echo $__env->yieldPushContent('header-actions'); ?>
 
                         <!-- User Profile Desktop -->
                         <div x-data="{ profileOpen: false }" class="relative">
                         <button @click="profileOpen = !profileOpen" class="flex items-center gap-3 px-4 py-2 rounded-xl bg-gradient-to-r from-slate-50 to-slate-100 hover:from-slate-100 hover:to-slate-200 transition-all shadow-sm border border-slate-200">
                             <div class="text-left">
-                                <p class="text-slate-800 font-semibold text-sm leading-tight">{{ auth()->user()->name }}</p>
+                                <p class="text-slate-800 font-semibold text-sm leading-tight"><?php echo e(auth()->user()->name); ?></p>
                                 <p class="text-slate-500 text-xs">Member</p>
                             </div>
                             <svg class="w-4 h-4 text-slate-400 transition-transform" :class="profileOpen ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -143,17 +143,17 @@
                              class="absolute right-0 mt-2 w-56 bg-white rounded-xl shadow-2xl border border-slate-200 py-2"
                              x-cloak>
                             <div class="px-4 py-3 border-b border-slate-100">
-                                <p class="text-sm font-semibold text-slate-800">{{ auth()->user()->name }}</p>
-                                <p class="text-xs text-slate-500 mt-0.5">{{ auth()->user()->email }}</p>
+                                <p class="text-sm font-semibold text-slate-800"><?php echo e(auth()->user()->name); ?></p>
+                                <p class="text-xs text-slate-500 mt-0.5"><?php echo e(auth()->user()->email); ?></p>
                             </div>
-                            <a href="{{ route('member.profile') }}" class="w-full flex items-center gap-2 px-4 py-2.5 text-sm text-blue-600 hover:bg-blue-50 transition">
+                            <a href="<?php echo e(route('member.profile')); ?>" class="w-full flex items-center gap-2 px-4 py-2.5 text-sm text-blue-600 hover:bg-blue-50 transition">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
                                 </svg>
                                 Edit Profil
                             </a>
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
+                            <form method="POST" action="<?php echo e(route('logout')); ?>">
+                                <?php echo csrf_field(); ?>
                                 <button type="submit" class="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 transition">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
                                     Logout
@@ -168,7 +168,7 @@
             <div class="p-8">
                 <div class="max-w-7xl">
                     <!-- Content -->
-                    @yield('content')
+                    <?php echo $__env->yieldContent('content'); ?>
                 </div>
             </div>
         </main>
@@ -249,6 +249,7 @@
         };
     </script>
 
-    @stack('scripts')
+    <?php echo $__env->yieldPushContent('scripts'); ?>
 </body>
 </html>
+<?php /**PATH D:\laragon\www\Project-KP-Archery\resources\views/layouts/member.blade.php ENDPATH**/ ?>

@@ -1,9 +1,7 @@
-@extends('layouts.member')
+<?php $__env->startSection('title', 'Dashboard'); ?>
+<?php $__env->startSection('subtitle', 'Ringkasan aktivitas member dan keluarga'); ?>
 
-@section('title', 'Dashboard')
-@section('subtitle', 'Ringkasan aktivitas member dan keluarga')
-
-@push('styles')
+<?php $__env->startPush('styles'); ?>
 <style>
     @keyframes slideDown {
         from { opacity: 0; transform: translateY(-10px); }
@@ -11,9 +9,9 @@
     }
     .animate-slide-down { animation: slideDown 0.3s ease-out; }
 </style>
-@endpush
+<?php $__env->stopPush(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div x-data="memberDashboard()" x-init="init()" class="space-y-6">
 
         <!-- Loading State -->
@@ -309,9 +307,9 @@
         </div>
     </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@push('scripts')
+<?php $__env->startPush('scripts'); ?>
 <script>
 
         // Auto-refresh CSRF token every 60 minutes to prevent expiry
@@ -346,9 +344,9 @@
         function memberDashboard() {
             return {
                 loading: true,
-                userName: '{{ auth()->user()->name }}',
-                userEmail: '{{ auth()->user()->email }}',
-                userInitial: '{{ strtoupper(substr(auth()->user()->name, 0, 1)) }}',
+                userName: '<?php echo e(auth()->user()->name); ?>',
+                userEmail: '<?php echo e(auth()->user()->email); ?>',
+                userInitial: '<?php echo e(strtoupper(substr(auth()->user()->name, 0, 1))); ?>',
                 
                 allMembers: [],
                 attendanceHistory: [],
@@ -521,4 +519,6 @@
             }
         }
 </script>
-@endpush
+<?php $__env->stopPush(); ?>
+
+<?php echo $__env->make('layouts.member', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH D:\laragon\www\Project-KP-Archery\resources\views/dashboards/member/dashboard.blade.php ENDPATH**/ ?>
