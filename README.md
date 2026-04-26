@@ -73,6 +73,7 @@ member oleh admin dan pelatih.
 UCD dapat dilihat pada:
 
 - [Use Case Diagram](docs/ucd.png)
+- [Use Case Diagram (Markdown)](docs/ucd.md)
 
 Deskripsi UCD tersedia pada folder berikut:
 
@@ -95,6 +96,7 @@ Dokumentasi API tersedia pada folder berikut:
 ERD dan desain database dapat dilihat pada:
 
 - [Entity Relationship Diagram](docs/erd.png)
+- [Entity Relationship Diagram (Markdown)](docs/erd.md)
 
 ## Testing Documentation
 

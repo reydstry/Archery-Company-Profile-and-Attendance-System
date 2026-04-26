@@ -68,10 +68,10 @@ class User extends Authenticatable
     }
 
     /**
-     * Get member profile
+     * Get all member profiles owned/registered by this user
      */
-    public function member()
+    public function members()
     {
-        return $this->hasOne(Member::class);
+        return $this->hasMany(Member::class);
     }
 }

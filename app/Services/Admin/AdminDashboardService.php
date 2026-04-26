@@ -80,7 +80,6 @@ class AdminDashboardService
                 'today_sessions' => TrainingSession::query()->whereDate('date', $todayDate)->count(),
                 'upcoming_sessions' => TrainingSession::query()->whereDate('date', '>=', $todayDate)->count(),
                 'total_sessions' => TrainingSession::query()->count(),
-                'today_bookings' => 0,
                 'today_attendance' => Attendance::query()
                     ->whereHas('session', function ($query) use ($todayDate) {
                         $query->whereDate('date', $todayDate);
@@ -140,7 +139,6 @@ class AdminDashboardService
                             'status' => $session->status?->value,
                             'max_participants' => $slot->max_participants,
                             'capacity' => $slot->max_participants,
-                            'total_bookings' => (int) ($session->attendances_count ?? 0),
                             'total_attendance' => (int) ($session->attendances_count ?? 0),
                             'coaches' => $slot->coaches
                                 ->map(fn ($coach) => [

@@ -130,7 +130,7 @@ class MemberManagementService
         ];
     }
 
-    public function bookingCandidates(array $filters): array
+    public function attendanceCandidates(array $filters): array
     {
         $query = Member::query()->with(['memberPackages' => function ($query) {
             $query->active()->with('package');
