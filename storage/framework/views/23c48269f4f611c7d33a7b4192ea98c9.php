@@ -100,33 +100,39 @@
         <!-- Main Content -->
         <main class="flex-1 lg:ml-64 min-h-screen">
             <!-- Desktop Header -->
-            <div class="sticky top-0 z-30 bg-[#0b0b0f] border-b border-slate-800 px-8 py-[15px] shadow-sm">
-                <div class="flex items-center justify-between">
-                    <button @click="sidebarOpen = !sidebarOpen" class="lg:hidden text-slate-300 hover:text-white">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
-                        </svg>
-                    </button>
+            <div class="sticky top-0 z-30 bg-[#0b0b0f] border-b border-slate-800 px-4 sm:px-8 py-3 sm:py-[15px] shadow-sm">
+                <div class="flex items-center justify-between gap-2">
+                    <div class="flex flex-row items-center gap-3 md:gap-4 flex-1 min-w-0">
+                        <button @click="sidebarOpen = !sidebarOpen" class="lg:hidden text-slate-300 hover:text-white shrink-0">
+                            <svg class="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+                            </svg>
+                        </button>
 
-                    <!-- Page Title & Subtitle -->
-                    <div>
-                        <h2 class="text-lg sm:text-2xl lg:text-3xl font-bold text-white"><?php echo $__env->yieldContent('title'); ?></h2>
-                        <p class="text-slate-300 mt-0.5 text-xs sm:text-sm"><?php echo $__env->yieldContent('subtitle'); ?></p>
+                        <!-- Page Title & Subtitle -->
+                        <div class="min-w-0">
+                            <h2 class="text-lg sm:text-2xl lg:text-3xl font-bold text-white truncate"><?php echo $__env->yieldContent('title'); ?></h2>
+                            <p class="text-slate-300 mt-0.5 text-[10px] sm:text-sm truncate"><?php echo $__env->yieldContent('subtitle'); ?></p>
+                        </div>
                     </div>
 
                     <!-- Right Side: Action Buttons + Profile -->
-                    <div class="flex items-center gap-3">
+                    <div class="flex items-center gap-2 sm:gap-3 shrink-0">
                         <!-- Page Actions (if any) -->
                         <?php echo $__env->yieldPushContent('header-actions'); ?>
 
                         <!-- User Profile Desktop -->
                         <div x-data="{ profileOpen: false }" class="relative">
-                        <button @click="profileOpen = !profileOpen" class="flex items-center gap-3 px-4 py-2 rounded-xl bg-gradient-to-r from-slate-50 to-slate-100 hover:from-slate-100 hover:to-slate-200 transition-all shadow-sm border border-slate-200">
-                            <div class="text-left">
+                        <button @click="profileOpen = !profileOpen" class="flex items-center gap-2 sm:gap-3 px-3 py-2 sm:px-4 sm:py-2 rounded-xl bg-gradient-to-r from-slate-50 to-slate-100 hover:from-slate-100 hover:to-slate-200 transition-all shadow-sm border border-slate-200">
+                            <div class="text-left hidden sm:block">
                                 <p class="text-slate-800 font-semibold text-sm leading-tight"><?php echo e(auth()->user()->name); ?></p>
                                 <p class="text-slate-500 text-xs">Member</p>
                             </div>
-                            <svg class="w-4 h-4 text-slate-400 transition-transform" :class="profileOpen ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <div class="sm:hidden w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-slate-700 font-bold text-sm">
+                                <?php echo e(strtoupper(substr(auth()->user()->name, 0, 1))); ?>
+
+                            </div>
+                            <svg class="w-3 h-3 sm:w-4 sm:h-4 text-slate-400 transition-transform hidden sm:block" :class="profileOpen ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
                             </svg>
                         </button>
@@ -165,8 +171,8 @@
                 </div>
             </div>
 
-            <div class="p-8">
-                <div class="max-w-7xl">
+            <div class="p-4 sm:p-8">
+                <div class="max-w-7xl mx-auto">
                     <!-- Content -->
                     <?php echo $__env->yieldContent('content'); ?>
                 </div>

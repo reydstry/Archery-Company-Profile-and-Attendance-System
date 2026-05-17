@@ -21,7 +21,7 @@
             <div class="flex flex-col items-center gap-4">
                 <div class="relative">
                     <div class="animate-spin rounded-full h-16 w-16 border-4 border-slate-200"></div>
-                    <div class="animate-spin rounded-full h-16 w-16 border-4 border-blue-600 border-t-transparent absolute top-0"></div>
+                    <div class="animate-spin rounded-full h-16 w-16 border-4 border-[#1a307b] border-t-transparent absolute top-0"></div>
                 </div>
                 <p class="text-slate-200 font-medium">Memuat dashboard...</p>
             </div>
@@ -67,20 +67,20 @@
             </div>
 
             <!-- Welcome Banner -->
-            <div class="relative overflow-hidden bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 rounded-3xl shadow-2xl">
+            <div class="relative overflow-hidden bg-gradient-to-br from-[#1a307b] to-[#112052] rounded-3xl shadow-2xl">
                 <div class="absolute inset-0 opacity-10">
                     <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 50px 50px;"></div>
                 </div>
                 <div class="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full -mr-48 -mt-48"></div>
 
-                <div class="relative px-8 py-10">
-                    <h1 class="text-4xl md:text-5xl font-bold text-white mb-3">
-                        Selamat Datang, <span x-text="userName"></span>! 👋
+                <div class="relative px-6 py-8 md:px-8 md:py-10">
+                    <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 md:mb-3 leading-tight">
+                        Selamat Datang, <br class="block sm:hidden" /><span x-text="userName"></span>! 👋
                     </h1>
-                    <p class="text-blue-100 text-lg mb-8" x-text="getCurrentDate()"></p>
+                    <p class="text-blue-100 text-sm md:text-lg mb-6 md:mb-8" x-text="getCurrentDate()"></p>
 
                     <!-- Quick Stats -->
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
                         <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-4">
                             <p class="text-blue-100 text-xs mb-1">Total Anggota</p>
                             <p class="text-white text-3xl font-bold" x-text="allMembers.length"></p>
@@ -102,15 +102,15 @@
             </div>
 
             <!-- Add Member Section -->
-            <div class="bg-white rounded-3xl shadow-lg border border-slate-200 p-8">
-                <div class="flex items-center justify-between mb-6">
+            <div class="bg-white rounded-3xl shadow-lg border border-slate-200 p-5 md:p-8">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
                     <div>
-                        <h2 class="text-2xl font-bold text-slate-800">Tambah Anggota Keluarga</h2>
-                        <p class="text-slate-600 mt-1">Daftarkan anggota keluarga Anda untuk latihan archery</p>
+                        <h2 class="text-xl md:text-2xl font-bold text-slate-800">Tambah Anggota Keluarga</h2>
+                        <p class="text-sm md:text-base text-slate-600 mt-1">Daftarkan anggota keluarga Anda untuk latihan archery</p>
                     </div>
                     <button @click="showAddMemberForm = !showAddMemberForm" 
-                            class="px-6 py-3 rounded-xl font-semibold transition-all"
-                            :class="showAddMemberForm ? 'bg-red-100 text-red-600 hover:bg-red-200' : 'bg-blue-600 text-white hover:bg-blue-700'">
+                            class="w-full sm:w-auto px-6 py-3 rounded-xl font-semibold transition-all"
+                            :class="showAddMemberForm ? 'bg-red-100 text-red-600 hover:bg-red-200' : 'bg-[#1a307b] text-white hover:bg-opacity-90'">
                         <span x-text="showAddMemberForm ? 'Tutup Form' : '+ Tambah Anggota'"></span>
                     </button>
                 </div>
@@ -122,13 +122,13 @@
                             <div>
                                 <label class="block text-sm font-semibold text-slate-700 mb-2">Nama Lengkap Anggota *</label>
                                 <input type="text" x-model="newMember.name" required
-                                       class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition"
+                                       class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-[#1a307b] focus:ring-2 focus:ring-[#1a307b]/30 outline-none transition"
                                        placeholder="Masukkan nama lengkap anak/anggota keluarga">
                             </div>
                             <div>
                                 <label class="block text-sm font-semibold text-slate-700 mb-2">Nomor Telepon</label>
                                 <input type="tel" x-model="newMember.phone"
-                                       class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition"
+                                       class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-[#1a307b] focus:ring-2 focus:ring-[#1a307b]/30 outline-none transition"
                                        placeholder="08xx xxxx xxxx (opsional)">
                             </div>
                         </div>
@@ -145,7 +145,7 @@
                                 Batal
                             </button>
                             <button type="submit" :disabled="submitting"
-                                    class="px-6 py-3 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition disabled:opacity-50 flex items-center gap-2">
+                                    class="px-6 py-3 bg-[#1a307b] text-white rounded-xl font-semibold hover:bg-[#1a307b]/90 transition disabled:opacity-50 flex items-center gap-2">
                                 <svg x-show="submitting" class="animate-spin w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                                     <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" class="opacity-25"></circle>
                                     <path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
@@ -160,9 +160,9 @@
             <!-- Members Grid -->
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <template x-for="member in allMembers" :key="member.id">
-                    <div class="bg-white rounded-3xl shadow-lg border-2 border-slate-200 hover:border-blue-300 hover:shadow-xl transition-all overflow-hidden">
+                    <div class="bg-white rounded-3xl shadow-lg border-2 border-slate-200 hover:border-[#1a307b]/30 hover:shadow-xl transition-all overflow-hidden">
                         <!-- Member Header -->
-                        <div class="bg-gradient-to-br from-blue-500 to-blue-600 px-6 py-5 text-white">
+                        <div class="bg-gradient-to-br from-[#1a307b] to-[#112052] px-6 py-5 text-white">
                             <div class="flex items-start justify-between mb-3">
                                 <div>
                                     <h3 class="text-xl font-bold mb-1" x-text="member.name"></h3>
@@ -179,27 +179,27 @@
                         </div>
 
                         <!-- Member Body -->
-                        <div class="p-6 space-y-4">
+                        <div class="p-5 md:p-6 space-y-4">
                             <!-- Active Package -->
                             <template x-if="member.activePackage">
                                 <div class="bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 rounded-2xl p-4">
                                     <p class="text-xs font-semibold text-green-700 mb-2">📦 Paket Aktif</p>
-                                    <p class="font-bold text-slate-800 mb-2" x-text="member.activePackage.package_name"></p>
-                                    <div class="grid grid-cols-3 gap-2 mb-3">
+                                    <p class="text-sm md:text-base font-bold text-slate-800 mb-2" x-text="member.activePackage.package_name"></p>
+                                    <div class="grid grid-cols-3 gap-1 md:gap-2 mb-3">
                                         <div class="text-center">
-                                            <p class="text-xs text-slate-600">Total</p>
-                                            <p class="text-lg font-bold text-slate-800" x-text="member.activePackage.total_sessions"></p>
+                                            <p class="text-[10px] md:text-xs text-slate-600">Total</p>
+                                            <p class="text-base md:text-lg font-bold text-slate-800" x-text="member.activePackage.total_sessions"></p>
                                         </div>
                                         <div class="text-center">
-                                            <p class="text-xs text-slate-600">Terpakai</p>
-                                            <p class="text-lg font-bold text-slate-800" x-text="member.activePackage.used_sessions"></p>
+                                            <p class="text-[10px] md:text-xs text-slate-600">Terpakai</p>
+                                            <p class="text-base md:text-lg font-bold text-slate-800" x-text="member.activePackage.used_sessions"></p>
                                         </div>
                                         <div class="text-center">
-                                            <p class="text-xs text-green-700">Tersisa</p>
-                                            <p class="text-lg font-bold text-green-700" x-text="member.activePackage.remaining_sessions"></p>
+                                            <p class="text-[10px] md:text-xs text-green-700">Tersisa</p>
+                                            <p class="text-base md:text-lg font-bold text-green-700" x-text="member.activePackage.remaining_sessions"></p>
                                         </div>
                                     </div>
-                                    <div class="flex items-center justify-between text-xs text-slate-600">
+                                    <div class="flex items-center justify-between text-[11px] md:text-xs text-slate-600">
                                         <span>Berlaku s/d</span>
                                         <span class="font-semibold" x-text="formatDate(member.activePackage.end_date)"></span>
                                     </div>
@@ -209,20 +209,20 @@
                             <!-- No Package -->
                             <template x-if="!member.activePackage">
                                 <div class="bg-amber-50 border-2 border-amber-200 rounded-2xl p-4 text-center">
-                                    <p class="text-amber-800 font-semibold mb-2">Belum Ada Paket Aktif</p>
+                                    <p class="text-sm md:text-base text-amber-800 font-semibold mb-2">Belum Ada Paket Aktif</p>
                                     <p class="text-xs text-amber-600">Hubungi admin untuk aktivasi</p>
                                 </div>
                             </template>
 
                             <!-- Attendance Stats -->
-                            <div class="grid grid-cols-2 gap-3">
-                                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-3 text-center">
-                                    <p class="text-xs text-blue-700 mb-1">Kehadiran</p>
-                                    <p class="text-2xl font-bold text-blue-700" x-text="member.stats?.total_attended || 0"></p>
+                            <div class="grid grid-cols-2 gap-2 md:gap-3">
+                                <div class="bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl p-3 text-center border border-slate-200">
+                                    <p class="text-[10px] md:text-xs text-[#1a307b] mb-1 font-semibold">Kehadiran</p>
+                                    <p class="text-xl md:text-2xl font-bold text-[#1a307b]" x-text="member.stats?.total_attended || 0"></p>
                                 </div>
-                                <div class="bg-gradient-to-br from-rose-50 to-red-50 rounded-xl p-3 text-center">
-                                    <p class="text-xs text-red-700 mb-1">Tidak Hadir</p>
-                                    <p class="text-2xl font-bold text-red-700" x-text="member.stats?.total_absent || 0"></p>
+                                <div class="bg-gradient-to-br from-rose-50 to-red-50 rounded-xl p-3 text-center border border-red-100">
+                                    <p class="text-[10px] md:text-xs text-[#d12823] mb-1 font-semibold">Tidak Hadir</p>
+                                    <p class="text-xl md:text-2xl font-bold text-[#d12823]" x-text="member.stats?.total_absent || 0"></p>
                                 </div> 
                             </div>
 
@@ -231,10 +231,10 @@
                                 <div class="flex-1">
                                     <div class="flex justify-between items-center mb-2">
                                         <span class="text-xs font-semibold text-slate-700">Tingkat Kehadiran</span>
-                                        <span class="text-sm font-bold text-blue-600" x-text="calculateAttendanceRate(member) + '%'"></span>
+                                        <span class="text-sm font-bold text-[#1a307b]" x-text="calculateAttendanceRate(member) + '%'"></span>
                                     </div>
                                     <div class="h-2 bg-slate-200 rounded-full overflow-hidden">
-                                        <div class="h-full bg-gradient-to-r from-blue-500 to-blue-600 rounded-full transition-all"
+                                        <div class="h-full bg-gradient-to-r from-[#1a307b] to-[#2542a3] rounded-full transition-all"
                                              :style="`width: ${calculateAttendanceRate(member)}%`"></div>
                                     </div>
                                 </div>
@@ -264,14 +264,26 @@
             </div>
 
             <!-- Recent Attendance Section -->
-            <div class="bg-white rounded-3xl shadow-lg border border-slate-200 p-8">
-                <h2 class="text-2xl font-bold text-slate-800 mb-6">Riwayat Kehadiran Terbaru</h2>
+            <div class="bg-white rounded-3xl shadow-lg border border-slate-200 p-5 md:p-8">
+                <h2 class="text-xl md:text-2xl font-bold text-slate-800 mb-6">Riwayat Kehadiran Terbaru</h2>
                 
                 <div x-show="attendanceHistory.length > 0" class="space-y-3">
                     <template x-for="(attendance, index) in attendanceHistory" :key="attendance.id">
-                        <div class="flex items-center gap-4 p-5 rounded-2xl border-2 border-slate-100 hover:border-blue-200 hover:shadow-md transition-all">
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 p-4 md:p-5 rounded-2xl border-2 border-slate-100 hover:border-[#1a307b]/30 hover:shadow-md transition-all">
                             <!-- Status Icon -->
-                            <div class="flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center"
+                            <div class="flex items-center gap-3 sm:hidden mb-2">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center"
+                                     :class="attendance.attendance_status === 'present' ? 'bg-gradient-to-br from-green-100 to-emerald-100' : 'bg-gradient-to-br from-red-100 to-rose-100'">
+                                    <svg class="w-5 h-5" :class="attendance.attendance_status === 'present' ? 'text-green-600' : 'text-red-600'"
+                                         fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path x-show="attendance.attendance_status === 'present'" stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                        <path x-show="attendance.attendance_status !== 'present'" stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                </div>
+                                <p class="font-bold text-slate-800" x-text="attendance.member_name"></p>
+                            </div>
+
+                            <div class="hidden sm:flex flex-shrink-0 w-14 h-14 rounded-xl items-center justify-center"
                                  :class="attendance.attendance_status === 'present' ? 'bg-gradient-to-br from-green-100 to-emerald-100' : 'bg-gradient-to-br from-red-100 to-rose-100'">
                                 <svg class="w-7 h-7" :class="attendance.attendance_status === 'present' ? 'text-green-600' : 'text-red-600'"
                                      fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -282,27 +294,27 @@
 
                             <!-- Content -->
                             <div class="flex-1 min-w-0">
-                                <p class="font-bold text-slate-800 mb-1" x-text="attendance.member_name"></p>
+                                <p class="hidden sm:block font-bold text-slate-800 mb-1" x-text="attendance.member_name"></p>
                                 <p class="text-sm text-slate-600 mb-1" x-text="formatDate(attendance.session_date) + ' · ' + attendance.session_time"></p>
                                 <p class="text-xs text-slate-500" x-text="'Coach ' + attendance.coach_name"></p>
                             </div>
 
                             <!-- Status Badge -->
-                            <span class="flex-shrink-0 px-4 py-2 rounded-lg text-sm font-bold"
+                            <span class="flex-shrink-0 inline-flex self-start sm:self-auto mt-2 sm:mt-0 px-4 py-2 rounded-lg text-sm font-bold w-fit"
                                   :class="attendance.attendance_status === 'present' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'"
                                   x-text="attendance.attendance_status === 'present' ? 'Hadir' : 'Tidak Hadir'"></span>
                         </div>
                     </template>
                 </div>
 
-                <div x-show="attendanceHistory.length === 0" class="text-center py-12">
-                    <div class="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-10 h-10 text-slate-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <div x-show="attendanceHistory.length === 0" class="text-center py-10 md:py-12">
+                    <div class="w-16 h-16 md:w-20 md:h-20 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 md:w-10 md:h-10 text-slate-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z"/>
                         </svg>
                     </div>
-                    <h4 class="text-lg font-bold text-slate-800 mb-2">Belum Ada Riwayat</h4>
-                    <p class="text-slate-500 text-sm">Booking sesi latihan via WhatsApp untuk memulai</p>
+                    <h4 class="text-base md:text-lg font-bold text-slate-800 mb-2">Belum Ada Riwayat</h4>
+                    <p class="text-slate-500 text-xs md:text-sm">Booking sesi latihan via WhatsApp untuk memulai</p>
                 </div>
             </div>
 
