@@ -149,21 +149,6 @@
                         ],
                     ],
                     [
-                        'title' => 'WhatsApp',
-                        'items' => [
-                            [
-                                'label' => 'Broadcast Event',
-                                'route' => 'admin.whatsapp.broadcast.create',
-                                'patterns' => ['admin.whatsapp.broadcast.*'],
-                            ],
-                            [
-                                'label' => 'Log Broadcast',
-                                'route' => 'admin.whatsapp.logs.index',
-                                'patterns' => ['admin.whatsapp.logs.*'],
-                            ],
-                        ],
-                    ],
-                    [
                         'title' => 'Laporan',
                         'items' => [
                             [
@@ -199,8 +184,28 @@
             <x-global.sidebar-nav :menu-groups="$sidebarMenu" />
         </aside>
 
+
+<!-- buat whatsapp navbar broadcast -->
+        <!-- [
+                        'title' => 'WhatsApp',
+                        'items' => [
+                            [
+                                'label' => 'Broadcast Event',
+                                'route' => 'admin.whatsapp.broadcast.create',
+                                'patterns' => ['admin.whatsapp.broadcast.*'],
+                            ],
+                            [
+                                'label' => 'Log Broadcast',
+                                'route' => 'admin.whatsapp.logs.index',
+                                'patterns' => ['admin.whatsapp.logs.*'],
+                            ],
+                        ],
+                    ], -->
+
+
+
         <!-- Main Content -->
-        <main class="flex-1 lg:ml-64 min-h-screen">
+        <main class="flex-1 lg:ml-64 min-h-screen w-full lg:w-[calc(100%-16rem)] max-w-full overflow-hidden">
             <!-- Desktop Header -->
             <div class="hidden lg:block sticky top-0 z-30 bg-[#0b0b0f] px-8 py-[15px] border-b border-slate-800 shadow-sm">
                 <div class="flex items-center justify-between">

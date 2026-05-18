@@ -6,7 +6,7 @@
 @section('content')
 <div class="space-y-4">
     <div class="bg-white border border-slate-200 rounded-xl p-4 sm:p-5">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-3 md:gap-4 lg:gap-3">
             <div>
                 <label class="block text-xs font-semibold text-slate-600 mb-1.5">Status</label>
                 <select id="statusFilter" class="w-full px-3 py-2.5 border border-slate-200 rounded-lg bg-slate-50 text-sm focus:outline-none focus:ring-2 focus:ring-[#1a307b]/30">

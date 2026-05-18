@@ -42,7 +42,7 @@
             </div>
         </div>
     
-        <form method="GET" action="<?php echo e(route('admin.reports.monthly')); ?>" class=" p-4 grid grid-cols-1 md:grid-cols-6 gap-3">
+        <form method="GET" action="<?php echo e(route('admin.reports.monthly')); ?>" class=" p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3">
             <?php if (isset($component)) { $__componentOriginal5c2a97ab476b69c1189ee85d1a95204b = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal5c2a97ab476b69c1189ee85d1a95204b = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.form.input','data' => ['label' => 'Bulan','name' => 'month','type' => 'number','min' => '1','max' => '12','value' => ''.e($filters['month']).'']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
@@ -249,7 +249,7 @@
     </div>
     
 
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
         <?php if (isset($component)) { $__componentOriginale69f0f097470d78692a115a309dee6a8 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginale69f0f097470d78692a115a309dee6a8 = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.stats.stat-card','data' => ['title' => 'Total Members']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
@@ -319,70 +319,48 @@
 <?php unset($__componentOriginale69f0f097470d78692a115a309dee6a8); ?>
 <?php endif; ?>
 
-        <?php if (isset($component)) { $__componentOriginale69f0f097470d78692a115a309dee6a8 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginale69f0f097470d78692a115a309dee6a8 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.stats.stat-card','data' => ['title' => 'Average Attendance']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('stats.stat-card'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['title' => 'Average Attendance']); ?>
-            <p class="mt-2 text-2xl font-bold text-slate-800"><?php echo e(number_format($summary['average_attendance'], 1)); ?>%</p>
-            <p class="text-xs text-slate-500 mt-1">Rata-rata kehadiran member</p>
-         <?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginale69f0f097470d78692a115a309dee6a8)): ?>
-<?php $attributes = $__attributesOriginale69f0f097470d78692a115a309dee6a8; ?>
-<?php unset($__attributesOriginale69f0f097470d78692a115a309dee6a8); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginale69f0f097470d78692a115a309dee6a8)): ?>
-<?php $component = $__componentOriginale69f0f097470d78692a115a309dee6a8; ?>
-<?php unset($__componentOriginale69f0f097470d78692a115a309dee6a8); ?>
-<?php endif; ?>
     </div>
 
-    <div class="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
-        <div class="flex items-center justify-between gap-3 px-5 py-3.5 bg-[#1a307b] border-b border-slate-100">
+    <div class="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden flex flex-col w-full">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 px-5 py-3.5 bg-[#1a307b] border-b border-slate-100 shrink-0">
             <div class="flex items-center gap-2.5">
                 <svg class="w-4 h-4 text-white" fill="white" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L13 13.414V19a1 1 0 01-.553.894l-4 2A1 1 0 017 21v-7.586L3.293 6.707A1 1 0 013 6V4z"/>
                 </svg>
-                <h3 class="text-sm font-semibold text-white">Informasi Broadcast</h3>
+                <h3 class="text-sm font-semibold text-white">Informasi Laporan</h3>
             </div>
         </div>
-        <?php if (isset($component)) { $__componentOriginal56fa0e384ba1121e2413ecd00764adcc = $component; } ?>
+        <div class="overflow-x-auto w-full">
+            <?php if (isset($component)) { $__componentOriginal56fa0e384ba1121e2413ecd00764adcc = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal56fa0e384ba1121e2413ecd00764adcc = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.stats.table','data' => ['headers' => ['No', 'Nama', 'Paket', 'Kehadiran', 'Sisa Slot', 'Slot Terpakai']]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.stats.table','data' => ['headers' => ['No', 'Nama', 'Paket', 'Kehadiran', 'Sisa', 'Terpakai']]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('stats.table'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['headers' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(['No', 'Nama', 'Paket', 'Kehadiran', 'Sisa Slot', 'Slot Terpakai'])]); ?>
-            <?php $__empty_1 = true; $__currentLoopData = $rows; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                <tr class="<?php echo e($row['is_low_attendance'] ? 'bg-white' : ''); ?> text-center">
-                    <td class="px-4 py-3 text-slate-700"><?php echo e($index + 1); ?></td>
-
-                    <td class="px-4 py-3">
-                        <p class="text-slate-800"><?php echo e($row['member_name']); ?></p>           
-                    </td>
-
-                    <td class="px-4 py-3">
-                        <p class="text-slate-700"><?php echo e($row['package_name']); ?></p>
-                    </td>
-
-                    <td class="px-4 py-3 text-slate-700 "><?php echo e($row['attended_sessions']); ?></td>
-
-                    <td class="px-4 py-3 text-slate-700"><?php echo e($row['remaining_slots']); ?> slot</td>
-
-                    <td class="px-4 py-3 text-slate-700"><?php echo e($row['used_slots']); ?> slot</td>
-
-
-                </tr>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+<?php $component->withAttributes(['headers' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(['No', 'Nama', 'Paket', 'Kehadiran', 'Sisa', 'Terpakai'])]); ?>
+                <?php $__empty_1 = true; $__currentLoopData = $rows; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                    <tr class="<?php echo e($row['is_low_attendance'] ? 'bg-white' : ''); ?> text-center">
+                        <td class="px-3 sm:px-4 py-3 text-slate-700 whitespace-nowrap"><?php echo e($index + 1); ?></td>
+    
+                        <td class="px-3 sm:px-4 py-3 whitespace-nowrap text-left min-w-[150px]">
+                            <p class="text-slate-800 font-medium"><?php echo e($row['member_name']); ?></p>           
+                        </td>
+    
+                        <td class="px-3 sm:px-4 py-3 whitespace-nowrap text-left min-w-[120px]">
+                            <p class="text-slate-700 text-sm"><?php echo e($row['package_name']); ?></p>
+                        </td>
+    
+                        <td class="px-3 sm:px-4 py-3 text-slate-700 whitespace-nowrap"><?php echo e($row['attended_sessions']); ?></td>
+    
+                        <td class="px-3 sm:px-4 py-3 text-slate-700 whitespace-nowrap text-sm"><?php echo e($row['remaining_slots']); ?></td>
+    
+                        <td class="px-3 sm:px-4 py-3 text-slate-700 whitespace-nowrap text-sm"><?php echo e($row['used_slots']); ?></td>
+    
+                    </tr>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                 <tr>
                     <td colspan="6" class="px-4 py-10 text-center text-slate-500">
                         Data report tidak tersedia untuk filter bulan/tahun yang dipilih.

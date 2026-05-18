@@ -132,7 +132,7 @@
                     <input type="file" @change="handlePhotoChange" accept="image/*" ref="photoInput"
                         :required="!editingGallery"
                         class="w-full px-4 py-2 rounded-xl border border-slate-200 focus:ring-2 focus:ring-[#1a307b] focus:border-transparent outline-none">
-                    <p class="text-xs text-slate-500 mt-1">Upload an image (max 5MB, formats: jpg, png, gif, webp)</p>
+                    <p class="text-xs text-slate-500 mt-1">Upload an image (max 20MB, all image formats)</p>
                     
                     <!-- Image Preview -->
                     <div x-show="photoPreview" class="mt-3">
@@ -392,9 +392,8 @@ function galleryData() {
             const file = event.target.files?.[0];
             if (!file) return;
             
-            const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp'];
-            if (!validTypes.includes(file.type)) {
-                this.errorMessage = 'Hanya gambar JPG, PNG, GIF, dan WEBP yang diperbolehkan.';
+            if (!file.type || !file.type.startsWith('image/')) {
+                this.errorMessage = 'Hanya file gambar yang diperbolehkan.';
                 this.showErrorModal = true;
                 if (this.$refs.photoInput) {
                     this.$refs.photoInput.value = '';
@@ -402,9 +401,9 @@ function galleryData() {
                 return;
             }
             
-            const maxSize = 5 * 1024 * 1024;
+            const maxSize = 20 * 1024 * 1024;
             if (file.size > maxSize) {
-                this.errorMessage = 'Ukuran gambar harus kurang dari 5MB.';
+                this.errorMessage = 'Ukuran gambar harus kurang dari 20MB.';
                 this.showErrorModal = true;
                 if (this.$refs.photoInput) {
                     this.$refs.photoInput.value = '';

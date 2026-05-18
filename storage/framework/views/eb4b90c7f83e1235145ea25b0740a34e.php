@@ -184,7 +184,7 @@
                     <label class="block text-sm font-semibold text-slate-700 mb-2">Photo</label>
                           <input type="file" @change="handlePhotoChange" accept="image/*" ref="photoInput"
                               class="w-full px-4 py-2 rounded-xl border border-slate-200 focus:ring-2 focus:ring-[#1a307b] focus:border-transparent outline-none">
-                    <p class="text-xs text-slate-500 mt-1">Optional: Upload an image (max 5MB, formats: jpg, png, gif, webp)</p>
+                    <p class="text-xs text-slate-500 mt-1">Optional: Upload an image (max 20MB, all image formats)</p>
                     
                     <!-- Image Preview -->
                     <div x-show="photoPreview" class="mt-3">
@@ -522,19 +522,18 @@ function achievementsData() {
             if (!file) return;
             
             // Validate file type
-            const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
-            if (!validTypes.includes(file.type)) {
-                this.showErrorMessage('Only JPG, PNG, and GIF images are allowed');
+            if (!file.type || !file.type.startsWith('image/')) {
+                this.showErrorMessage('Only image files are allowed');
                 if (this.$refs.photoInput) {
                     this.$refs.photoInput.value = '';
                 }
                 return;
             }
             
-            // Validate file size (max 5MB)
-            const maxSize = 5 * 1024 * 1024; // 5MB
+            // Validate file size (max 20MB)
+            const maxSize = 20 * 1024 * 1024; // 20MB
             if (file.size > maxSize) {
-                this.showErrorMessage('Image size must be less than 5MB');
+                this.showErrorMessage('Image size must be less than 20MB');
                 if (this.$refs.photoInput) {
                     this.$refs.photoInput.value = '';
                 }

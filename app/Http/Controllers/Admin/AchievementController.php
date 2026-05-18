@@ -27,7 +27,7 @@ class AchievementController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'date' => 'required|date',
-            'photo' => 'nullable|image|mimes:jpeg,jpg,png,gif,webp|max:5120',
+            'photo' => 'nullable|image|mimes:jpeg,jpg,png,gif,webp|max:20480',
         ]);
 
         if ($validated['type'] === 'member' && empty($validated['member_id'])) {
@@ -62,7 +62,7 @@ class AchievementController extends Controller
             'title' => 'sometimes|required|string|max:255',
             'description' => 'sometimes|required|string',
             'date' => 'sometimes|required|date',
-            'photo' => 'nullable|image|mimes:jpeg,jpg,png,gif,webp|max:5120',
+            'photo' => 'nullable|image|mimes:jpeg,jpg,png,gif,webp|max:20480',
         ]);
 
         $type = $validated['type'] ?? $achievement->type;

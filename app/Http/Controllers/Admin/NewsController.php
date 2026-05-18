@@ -25,7 +25,7 @@ class NewsController extends Controller
             'title' => 'required|string|max:255',
             'content' => 'required|string',
             'publish_date' => 'required|date',
-            'photo' => 'nullable|image|mimes:jpeg,jpg,png,gif,webp|max:5120',
+            'photo' => 'nullable|image|mimes:jpeg,jpg,png,gif,webp|max:20480',
         ]);
 
         $news = $this->contentManagementService->createNews($validated, $request->file('photo'));
@@ -49,7 +49,7 @@ class NewsController extends Controller
             'title' => 'sometimes|required|string|max:255',
             'content' => 'sometimes|required|string',
             'publish_date' => 'sometimes|required|date',
-            'photo' => 'nullable|image|mimes:jpeg,jpg,png,gif,webp|max:5120',
+            'photo' => 'nullable|image|mimes:jpeg,jpg,png,gif,webp|max:20480',
         ]);
 
         $news = $this->contentManagementService->updateNews($news, $validated, $request->file('photo'));

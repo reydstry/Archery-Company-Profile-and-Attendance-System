@@ -8,8 +8,45 @@ use App\Models\News;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 
+use Illuminate\Support\Str;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
+use Intervention\Image\Encoders\JpegEncoder;
+
 class ContentManagementService
 {
+    private function storeImage(UploadedFile $photo, string $folder): string
+    {
+        // 5 MB = 5 * 1024 * 1024 = 5242880 bytes
+        if ($photo->getSize() > 5242880) {
+            try {
+                $manager = new ImageManager(new Driver());
+                $image = $manager->read($photo->getRealPath());
+
+                // Resize proportionally to a max of 1920x1920
+                $image->scaleDown(1920, 1920);
+
+                // Generate a secure filename with .jpg since we convert to jpeg
+                $filename = Str::random(40) . '.jpg';
+                $path = $folder . '/' . $filename;
+
+                // Ensure directory exists
+                Storage::disk('public')->makeDirectory($folder);
+
+                // Encode as JPEG with 75% quality to save space
+                $fullPath = Storage::disk('public')->path($path);
+                $image->encode(new JpegEncoder(75))->save($fullPath);
+
+                return $path;
+            } catch (\Throwable $e) {
+                // Fallback to original upload if compression fails
+                return $photo->store($folder, 'public');
+            }
+        }
+
+        return $photo->store($folder, 'public');
+    }
+
     public function listNews()
     {
         return News::query()
@@ -21,7 +58,7 @@ class ContentManagementService
     public function createNews(array $payload, ?UploadedFile $photo): News
     {
         if ($photo) {
-            $payload['photo_path'] = $photo->store('news', 'public');
+            $payload['photo_path'] = $this->storeImage($photo, 'news');
         }
 
         unset($payload['photo']);
@@ -36,7 +73,7 @@ class ContentManagementService
                 Storage::disk('public')->delete($news->photo_path);
             }
 
-            $payload['photo_path'] = $photo->store('news', 'public');
+            $payload['photo_path'] = $this->storeImage($photo, 'news');
         }
 
         unset($payload['photo']);
@@ -69,7 +106,7 @@ class ContentManagementService
         }
 
         if ($photo) {
-            $payload['photo_path'] = $photo->store('achievements', 'public');
+            $payload['photo_path'] = $this->storeImage($photo, 'achievements');
         }
 
         unset($payload['photo']);
@@ -89,7 +126,7 @@ class ContentManagementService
                 Storage::disk('public')->delete($achievement->photo_path);
             }
 
-            $payload['photo_path'] = $photo->store('achievements', 'public');
+            $payload['photo_path'] = $this->storeImage($photo, 'achievements');
         }
 
         unset($payload['photo']);
@@ -117,7 +154,7 @@ class ContentManagementService
     public function createGallery(array $payload, ?UploadedFile $photo): Gallery
     {
         if ($photo) {
-            $payload['photo_path'] = $photo->store('galleries', 'public');
+            $payload['photo_path'] = $this->storeImage($photo, 'galleries');
         }
 
         unset($payload['photo']);
@@ -132,7 +169,7 @@ class ContentManagementService
                 Storage::disk('public')->delete($gallery->photo_path);
             }
 
-            $payload['photo_path'] = $photo->store('galleries', 'public');
+            $payload['photo_path'] = $this->storeImage($photo, 'galleries');
         }
 
         unset($payload['photo']);

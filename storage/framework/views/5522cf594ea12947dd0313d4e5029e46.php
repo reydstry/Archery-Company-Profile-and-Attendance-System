@@ -56,10 +56,10 @@
         </div>
         <div class="p-4 sm:p-6 space-y-5">
             <div class="pb-5 border-b border-slate-200">
-                <div class="flex items-center   gap-4">
+                <div class="flex flex-col md:flex-row md:items-end gap-4">
 
                     <!-- Input (ambil sisa space) -->
-                    <div class="flex-1">
+                    <div class="flex-1 w-full">
                         <h3 class="text-sm font-semibold text-[#1a307b] mb-3" id="sessionTitle">Sesi Latihan</h3>
                         <input type="text"
                             id="searchParticipant"
@@ -69,14 +69,14 @@
                     </div>
 
                     <!-- Stats (width mengikuti isi) -->
-                    <div class="flex gap-3">
+                    <div class="flex flex-row gap-3 w-full md:w-auto">
 
-                        <div class="px-4 py-3 bg-slate-50 rounded-xl border border-slate-200 text-center whitespace-nowrap">
+                        <div class="flex-1 px-4 py-3 bg-slate-50 rounded-xl border border-slate-200 text-center whitespace-nowrap">
                             <p class="text-lg font-bold text-[#1a307b]" id="presentCount">0</p>
                             <p class="text-xs text-[#2a4a9f] font-semibold">Member Hadir</p>
                         </div>
 
-                        <div class="px-4 py-3 bg-slate-50 rounded-xl border border-slate-200 text-center whitespace-nowrap">
+                        <div class="flex-1 px-4 py-3 bg-slate-50 rounded-xl border border-slate-200 text-center whitespace-nowrap">
                             <p class="text-lg font-bold text-slate-600" id="totalCount">0</p>
                             <p class="text-xs text-slate-700 font-semibold">Member Aktif</p>
                         </div>

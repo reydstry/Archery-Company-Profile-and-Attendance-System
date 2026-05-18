@@ -26,7 +26,7 @@ class GalleryController extends Controller
             'description' => 'nullable|string',
             'category' => 'required|in:training,competition,group_selfie',
             'is_active' => 'nullable|boolean',
-            'photo' => 'required|image|mimes:jpeg,jpg,png,gif,webp|max:5120',
+            'photo' => 'required|image|mimes:jpeg,jpg,png,gif,webp|max:20480',
         ]);
 
         $gallery = $this->contentManagementService->createGallery($validated, $request->file('photo'));
@@ -51,7 +51,7 @@ class GalleryController extends Controller
             'description' => 'nullable|string',
             'category' => 'sometimes|required|in:training,competition,group_selfie',
             'is_active' => 'nullable|boolean',
-            'photo' => 'nullable|image|mimes:jpeg,jpg,png,gif,webp|max:5120',
+            'photo' => 'nullable|image|mimes:jpeg,jpg,png,gif,webp|max:20480',
         ]);
 
         $gallery = $this->contentManagementService->updateGallery($gallery, $validated, $request->file('photo'));

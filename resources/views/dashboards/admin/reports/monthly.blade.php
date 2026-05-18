@@ -29,7 +29,7 @@
             </div>
         </div>
     
-        <form method="GET" action="{{ route('admin.reports.monthly') }}" class=" p-4 grid grid-cols-1 md:grid-cols-6 gap-3">
+        <form method="GET" action="{{ route('admin.reports.monthly') }}" class=" p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3">
             <x-form.input
                 label="Bulan"
                 name="month"
@@ -212,7 +212,7 @@
     </div>
     
 
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
         <x-stats.stat-card title="Total Members">
             <p class="mt-2 text-2xl font-bold text-slate-800">{{ $summary['total_members'] }}</p>
             <p class="text-xs text-slate-500 mt-1">Member aktif</p>
@@ -228,43 +228,39 @@
             <p class="text-xs text-slate-500 mt-1">Member yang sudah latihan</p>
         </x-stats.stat-card>
 
-        <x-stats.stat-card title="Average Attendance">
-            <p class="mt-2 text-2xl font-bold text-slate-800">{{ number_format($summary['average_attendance'], 1) }}%</p>
-            <p class="text-xs text-slate-500 mt-1">Rata-rata kehadiran member</p>
-        </x-stats.stat-card>
     </div>
 
-    <div class="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
-        <div class="flex items-center justify-between gap-3 px-5 py-3.5 bg-[#1a307b] border-b border-slate-100">
+    <div class="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden flex flex-col w-full">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 px-5 py-3.5 bg-[#1a307b] border-b border-slate-100 shrink-0">
             <div class="flex items-center gap-2.5">
                 <svg class="w-4 h-4 text-white" fill="white" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L13 13.414V19a1 1 0 01-.553.894l-4 2A1 1 0 017 21v-7.586L3.293 6.707A1 1 0 013 6V4z"/>
                 </svg>
-                <h3 class="text-sm font-semibold text-white">Informasi Broadcast</h3>
+                <h3 class="text-sm font-semibold text-white">Informasi Laporan</h3>
             </div>
         </div>
-        <x-stats.table :headers="['No', 'Nama', 'Paket', 'Kehadiran', 'Sisa Slot', 'Slot Terpakai']">
-            @forelse($rows as $index => $row)
-                <tr class="{{ $row['is_low_attendance'] ? 'bg-white' : '' }} text-center">
-                    <td class="px-4 py-3 text-slate-700">{{ $index + 1 }}</td>
-
-                    <td class="px-4 py-3">
-                        <p class="text-slate-800">{{ $row['member_name'] }}</p>           
-                    </td>
-
-                    <td class="px-4 py-3">
-                        <p class="text-slate-700">{{ $row['package_name'] }}</p>
-                    </td>
-
-                    <td class="px-4 py-3 text-slate-700 ">{{ $row['attended_sessions'] }}</td>
-
-                    <td class="px-4 py-3 text-slate-700">{{ $row['remaining_slots'] }} slot</td>
-
-                    <td class="px-4 py-3 text-slate-700">{{ $row['used_slots'] }} slot</td>
-
-
-                </tr>
-            @empty
+        <div class="overflow-x-auto w-full">
+            <x-stats.table :headers="['No', 'Nama', 'Paket', 'Kehadiran', 'Sisa', 'Terpakai']">
+                @forelse($rows as $index => $row)
+                    <tr class="{{ $row['is_low_attendance'] ? 'bg-white' : '' }} text-center">
+                        <td class="px-3 sm:px-4 py-3 text-slate-700 whitespace-nowrap">{{ $index + 1 }}</td>
+    
+                        <td class="px-3 sm:px-4 py-3 whitespace-nowrap text-left min-w-[150px]">
+                            <p class="text-slate-800 font-medium">{{ $row['member_name'] }}</p>           
+                        </td>
+    
+                        <td class="px-3 sm:px-4 py-3 whitespace-nowrap text-left min-w-[120px]">
+                            <p class="text-slate-700 text-sm">{{ $row['package_name'] }}</p>
+                        </td>
+    
+                        <td class="px-3 sm:px-4 py-3 text-slate-700 whitespace-nowrap">{{ $row['attended_sessions'] }}</td>
+    
+                        <td class="px-3 sm:px-4 py-3 text-slate-700 whitespace-nowrap text-sm">{{ $row['remaining_slots'] }}</td>
+    
+                        <td class="px-3 sm:px-4 py-3 text-slate-700 whitespace-nowrap text-sm">{{ $row['used_slots'] }}</td>
+    
+                    </tr>
+                @empty
                 <tr>
                     <td colspan="6" class="px-4 py-10 text-center text-slate-500">
                         Data report tidak tersedia untuk filter bulan/tahun yang dipilih.

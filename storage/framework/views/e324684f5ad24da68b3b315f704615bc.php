@@ -18,13 +18,11 @@
             $facilities = [
                 ['image' => 'section.jpg', 'title' => __('about.facility_1_title'), 'description' => __('about.facility_1_desc')],
                 ['image' => 'section.jpg', 'title' => __('about.facility_2_title'), 'description' => __('about.facility_2_desc')],
-                ['image' => 'section.jpg', 'title' => __('about.facility_3_title'), 'description' => __('about.facility_3_desc')],
-                ['image' => 'section.jpg', 'title' => __('about.facility_4_title'), 'description' => __('about.facility_4_desc')],
-            ];
+                ['image' => 'section.jpg', 'title' => __('about.facility_3_title'), 'description' => __('about.facility_3_desc')],];
         ?>
 
         <!-- Facility Cards -->
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div class="grid sm:grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
             <?php $__currentLoopData = $facilities; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $facility): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <div class="relative group">
                 <div class="liquid-glass relative h-full transition-transform duration-500 hover:scale-105"
